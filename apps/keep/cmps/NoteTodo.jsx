@@ -5,6 +5,7 @@ export function NoteTodo({ note }) {
 
 
             <h2>{note.info.label}</h2>
+            {/* <a className="delete-note" onClick={this.onDeleteNote()}>X</a> */}
 
         </div>
     </section>

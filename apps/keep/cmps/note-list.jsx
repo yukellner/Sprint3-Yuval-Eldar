@@ -9,30 +9,66 @@ import { NoteAdd } from '../cmps/NoteAdd.jsx'
 export class NoteList extends React.Component {
 
     state = {
-        note: null
+        notes: null
     }
+
+    componentDidMount() {
+        this.loadNotes()
+    }
+
+    // onDeleteNoteb = (id) => {
+    //     console.log('to delete id',id)
+    //     noteService.remove(id)
+    //     this.loadNotes()
+
+
+    // }
+
+
+
+
+    loadNotes = () => {
+        console.log('lodded')
+        noteService.getNotes()
+            .then(notes => {
+                if (!notes) return this.props.history.push('/')
+                this.setState({ notes })
+            })
+    }
+
+    // onDeleteNote = (id) => {
+        
+    //     noteService.remove(id)
+    //     loadNotes()
+
+
+    // }
 
 
 
     render() {
-        const notes = noteService.getNotes()
+        const { notes } = this.state
 
 
+        if (!notes) return <h1>loading...</h1>
         return <section>
 
-                <NoteFilter />
-                <NoteAdd />
+            <NoteFilter />
+            <NoteAdd loadNotes={this.loadNotes}/>
 
 
             <div className="notes-container grid justify-center align-center">
 
 
+
+
                 {notes.map(note => {
 
-                    return <div key={note.id}>
-                        {note.type === 'note-txt' && <NoteTxt note={note} />}
+                    return <div key={note.id} >
+                        {note.type === 'note-txt' && <NoteTxt note={note} loadNotes={this.loadNotes} />}
                         {note.type === 'note-img' && <NoteImg note={note} />}
                         {note.type === 'note-todos' && <NoteTodo note={note} />}
+                        
 
                     </div>
 
