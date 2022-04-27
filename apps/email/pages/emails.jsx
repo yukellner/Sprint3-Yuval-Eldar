@@ -38,10 +38,15 @@ export class Emails extends React.Component{
 
     toggleStar = (ID) => {
 
+        console.log('toggle star', ID);
+
         const emails = this.state.emails
         const index = emails.findIndex((email) => email.id === ID)
+        console.log(index);
         emails[index].isStar = !emails[index].isStar
         emailService.updateEmails(emails)
+        this.setState({emails})
+
 
     }
 
@@ -56,7 +61,7 @@ export class Emails extends React.Component{
             <div className="email-core">
 
                 <EmailSideBar/>
-                <EmailList emails={this.state.emails} />
+                <EmailList emails={this.state.emails} toggleStar={this.toggleStar} />
             </div>
            </section>
     }
