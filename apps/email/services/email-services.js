@@ -4,6 +4,7 @@ export const emailService = {
 
     getEmails,
     query,
+    updateEmails
     
 }
 
@@ -13,6 +14,7 @@ const txt = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis acc
 
 const defaultEmails = [{
     to: null,
+    from: 'dude@gmail.com',
     date: new Date(),
     id: makeId(),
     title: 'test email 1',
@@ -25,6 +27,7 @@ const defaultEmails = [{
 }, 
 {
     to: null,
+    from: 'commerical@gmail.com',
     date: new Date(),
     id: makeId(),
     title: 'test email 2',
@@ -37,6 +40,7 @@ const defaultEmails = [{
 }, 
 {
     to: null,
+    from: 'Spam@gmail.com',
     date: new Date(),
     id: makeId(),
     title: 'test email 3',
@@ -49,6 +53,7 @@ const defaultEmails = [{
 }, 
 {
     to: null,
+    from: 'Lady@gmail.com',
     date: new Date(),
     id: makeId(),
     title: 'test email 4',
@@ -67,10 +72,14 @@ function getEmails() {
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails) {
         emails = defaultEmails
-        storageService.saveToStorage(emails)
+        storageService.saveToStorage(EMAIL_KEY,emails)
     }
   
     return emails
+}
+
+function updateEmails(emails) {
+    storageService.saveToStorage(EMAIL_KEY,emails)
 }
 
 
@@ -89,7 +98,7 @@ function query(filterBy) {
 
     console.log('querry', filterBy);
     
-    let emails = getDefaultEmails()
+    let emails = getEmails()
 
     if (filterBy) {
             let { title } = filterBy
