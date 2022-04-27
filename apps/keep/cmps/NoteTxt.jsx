@@ -4,7 +4,7 @@ export function NoteTxt({ note }) {
 
         <div className="note-card">
 
-            <h1>{note.info.txt}</h1>
+            <h1>{note.info.title}</h1>
         </div>
     </section>
 }
