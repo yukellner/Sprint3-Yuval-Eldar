@@ -4,7 +4,8 @@ export const emailService = {
 
     getEmails,
     query,
-    updateEmails
+    updateEmails,
+    getById
     
 }
 
@@ -17,10 +18,10 @@ const defaultEmails = [{
     from: 'dude@gmail.com',
     date: new Date(),
     id: makeId(),
-    title: 'test email 1',
+    title: 'tel aviv ',
     subject: 'subject',
     folder: 'inbox',
-    lables: [],
+    labels: [],
     isStar: (Math.random() > 0.5) ? false : true,
     isRead: (Math.random() > 0.5) ? false : true,
     txt: txt
@@ -30,10 +31,10 @@ const defaultEmails = [{
     from: 'commerical@gmail.com',
     date: new Date(),
     id: makeId(),
-    title: 'test email 2',
+    title: 'sababa',
     subject: 'subject',
     folder: 'inbox',
-    lables: [],
+    labels: [],
     isStar: (Math.random() > 0.5) ? false : true,
     isRead: (Math.random() > 0.5) ? false : true,
     txt: txt
@@ -46,7 +47,7 @@ const defaultEmails = [{
     title: 'test email 3',
     subject: 'subject',
     folder: 'inbox',
-    lables: [],
+    labels: [],
     isStar: (Math.random() > 0.5) ? false : true,
     isRead: (Math.random() > 0.5) ? false : true,
     txt: txt
@@ -59,7 +60,7 @@ const defaultEmails = [{
     title: 'test email 4',
     subject: 'subject',
     folder: 'inbox',
-    lables: [],
+    labels: [],
     isStar: (Math.random() > 0.5) ? false : true,
     isRead: (Math.random() > 0.5) ? false : true,
     txt: txt
@@ -102,11 +103,16 @@ function query(filterBy) {
 
     if (filterBy) {
             let { title } = filterBy
-            emails = email.filter(email => 
-            email.title.includes(title))
-            }
+            return Promise.resolve(emails.filter(email => {
+                return email.title.includes(title)
+            }))
+        }
      
-        
-
     return Promise.resolve(emails)
 }
+
+function getById(Id) {
+    const emails = storageService.loadFromStorage(EMAIL_KEY)
+    const email = emails.find((email) => Id === email.id);
+    return Promise.resolve(email);
+  }

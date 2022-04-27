@@ -1,14 +1,36 @@
 
-// import { emailService } from "../../../services/email-services.js"
+import { emailService } from "../services/email-services.js"
 import { EmailPriview } from "./email-preview.jsx"
 
-export function EmailList(props) {
+export class EmailList extends React.Component {
 
 
-        const {emails} = props
-        return <section className="email-list">
-                {emails.map((email) => <EmailPriview email={email} key={email.id} toggleStar={props.toggleStar}/> )}
-                
-        </section>
+     
+        toggleStar = (ID) => {
+
+                console.log('toggle star', ID);
+        
+                const emails = this.state.emails
+                const index = emails.findIndex((email) => email.id === ID)
+                console.log(index);
+                emails[index].isStar = !emails[index].isStar
+                emailService.updateEmails(emails)
+                this.setState({emails})
+            }
+    
+
+
+
+
+        render( ) {
+
+                const emails = this.props.emails
+
+                        return <section className="email-list">
+                                {emails.map((email) => <EmailPriview email={email} key={email.id} toggleStar={this.toggleStar}/> )}
+                        
+                                </section>
     }
+
+}
 

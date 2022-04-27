@@ -2,16 +2,26 @@ import { emailService } from "../services/email-services.js"
 import { EmailList } from "../cmp/email-list.jsx"
 import { EmailSideBar } from "../cmp/email-side-bar.jsx"
 import { EmailFilter } from "../cmp/email-filter-header.jsx"
+import { EmailDetail } from "../cmp/email-detail.jsx"
 
 
-const { Link, Route, Switch } = ReactRouterDOM
+
+const Router = ReactRouterDOM.HashRouter
+const { Route, Switch, Link} = ReactRouterDOM
 
 export class Emails extends React.Component{
 
 
     state = {
         emails: [],
-        searchBy: null
+        searchVal:  {
+            title:'',
+            isStar: null,
+            isRead: null,
+            lables: []
+        },
+        selectedEmailID: null
+
     }
 
     componentDidMount() {
@@ -21,47 +31,40 @@ export class Emails extends React.Component{
         
     }
 
+   
+
     loadEmails = () => {
-        console.log(this.state.searchBy);
-        emailService.query(this.state.searchBy)
+        emailService.query(this.state.searchVal)
             .then(emails => {
                 this.setState({ emails })
             })
     }
 
-    onSet = (searchBy) => {
-        this.setState({searchBy}, this.loadEmails)
-        console.log(this.state.searchBy)
-    }
 
-   
+    handleChange = ({target}) => {
+        const value = target.value
+        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, title: value } }), this.loadEmails())
 
-    toggleStar = (ID) => {
-
-        console.log('toggle star', ID);
-
-        const emails = this.state.emails
-        const index = emails.findIndex((email) => email.id === ID)
-        console.log(index);
-        emails[index].isStar = !emails[index].isStar
-        emailService.updateEmails(emails)
-        this.setState({emails})
-
-
+        
     }
 
 
-
-
+    selectEmail = (ID) => {
+        this.setState({selectedEmailID: ID})
+    }
 
     render() {
 
         return <section className="email-main">
-            <EmailFilter onSet={this.onSet}/>
+            <EmailFilter handleChange={this.handleChange}/>
             <div className="email-core">
-
                 <EmailSideBar/>
-                <EmailList emails={this.state.emails} toggleStar={this.toggleStar} />
+                <section>
+                    <Switch>
+                        <Route path='/emails/:id' render={(props) => <EmailDetail {...props}/>}/>
+                        <Route path="/emails"  > <EmailList emails={this.state.emails}/> </Route>
+                    </Switch>
+                </section>
             </div>
            </section>
     }
