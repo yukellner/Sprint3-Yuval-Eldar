@@ -7,7 +7,7 @@ export class NoteAdd extends React.Component {
     
     state = {
         note: {
-            id: utilService.makeId(),
+            
             type: 'note-txt',
             isPinned: false,
             info: {
@@ -30,6 +30,8 @@ export class NoteAdd extends React.Component {
     onSaveNote = (ev) => {
         ev.preventDefault()
         noteService.saveNote(this.state.note)
+        console.log( 'props',this.props.note )
+
             // .then(() => {
             //     this.props.history.push('/note')
             // })
@@ -38,7 +40,7 @@ export class NoteAdd extends React.Component {
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        this.setState((prevState) => ({ note: { ...prevState.note  , info: {[field]:value} } }))
+        this.setState((prevState) => ({ note: { ...prevState.note  , info:{...prevState.note.info, [field]:value}  }}))
         console.log('state',this.state.note)
     }
 
@@ -52,7 +54,7 @@ export class NoteAdd extends React.Component {
 
                 <form action="" className="notes-form" onSubmit={this.onSaveNote}>
 
-                    <input type="text" className="notes-filter" name="info[title]" placeholder="add a note" onChange={this.handleChange} />
+                    <input type="text" className="notes-filter" name="title" placeholder="add a note" onChange={this.handleChange} />
                     <input type="text" className="notes-filter" name="text" placeholder="add a text" />
                     <ul className="pick-col" ><a>pick a colors</a></ul>
                     <button>add</button>

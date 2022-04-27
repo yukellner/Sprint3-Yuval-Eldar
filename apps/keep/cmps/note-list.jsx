@@ -17,7 +17,6 @@ export class NoteList extends React.Component {
     render() {
         const notes = noteService.getNotes()
 
-        console.log('notes', notes)
 
         return <section>
 
