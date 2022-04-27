@@ -1,0 +1,57 @@
+
+
+
+.email-main {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.email-core {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.email-priview {
+    display: flex; 
+    padding-left: 10px;
+    flex-grow: 1;
+     
+
+}
+
+.email-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+}
+
+.email-priview:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.email-side-bar {
+    width: 250px;
+    background-color: rgb(225, 164, 164);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-left: 10px;
+}
+
+
+.email-menue-option {
+    height: 25px;
+    font-size: 18px;
+    margin-left: 10px;  
+}
+
+.email-menue-compose {
+    height: 25px;
+    font-size: 20px;
+    margin-left: 10px; 
+}
+

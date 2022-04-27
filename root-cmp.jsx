@@ -4,7 +4,7 @@
 // import { CarDetails } from './pages/car-details.jsx'
 // import {CarEdit} from './pages/car-edit.jsx'
 import { Emails } from './apps/email/pages/emails.jsx'
-import { NoteIndex } from './apps/keep/pages/note-index.jsx'
+import { Keep } from './apps/keep/pages/keep-app.jsx'
 import { AppHome } from './pages/app-home.jsx'
 import { AppHeader } from './cmps/app-header.jsx'
 
@@ -24,7 +24,7 @@ export function App() {
                 {/* <Route path="/car/edit/:carId?" component={}/>
                 <Route path="/car/:carId" component={CarDetails}/> */}
                 <Route path="/emails" component={Emails} />
-                <Route path="/keep" component={NoteIndex} />
+                <Route path="/keep" component={Keep} />
                 <Route path="/" component={AppHome} />
             </Switch>
         </section>

@@ -12,13 +12,3 @@ export function EmailList({ emails }) {
         </section>
     }
 
-
-
-
-// import { CarPreview } from './car-preview.jsx'
-
-// export function CarList({ cars }) {
-//     return <section className="car-list flex">
-//         {cars.map(car => <EmailPriview email={email} key={email.id}/>)}
-//     </section>
-// }

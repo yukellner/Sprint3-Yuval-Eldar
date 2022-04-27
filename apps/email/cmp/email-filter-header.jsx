@@ -3,11 +3,18 @@
 export class EmailFilter extends React.Component {
 
     state = {
-        sraechVal: null
+        sraechVal: {
+            title:'',
+            isStar: null,
+            isRead: null,
+            lables: []
+        }
     }
 
-    handleChange = () => {
-        return
+    handleChange = ({target}) => {
+        const value = target.value
+        this.setState((prevState) => ({ sraechVal: { ...prevState.sraechVal, title: value } }), this.props.onSet)
+        
     }
 
     render() {
@@ -15,7 +22,7 @@ export class EmailFilter extends React.Component {
         return <section className="email-filter">
             <form action="">
                 <label htmlFor="">Search:</label>
-                <input type="text" />
+                <input onChange={this.handleChange} type="text" />
                 <button>🔍</button>
             </form>
         </section>
