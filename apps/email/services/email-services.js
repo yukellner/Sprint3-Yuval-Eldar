@@ -1,10 +1,13 @@
-
+import { storageService } from '../../../services/storage.service.js'
 
 export const emailService = {
 
-    getDefaultEmails,
-    query
+    getEmails,
+    query,
+    
 }
+
+const EMAIL_KEY = 'mister_email'
 
 const txt = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis accusantium ipsum architecto vel amet quibusdam veniam ullam, quisquam fugiat ab, quam dolores! Dolore quibusdam exercitationem minima labore reprehenderit commodi necessitatibus!'
 
@@ -24,7 +27,7 @@ const defaultEmails = [{
     to: null,
     date: new Date(),
     id: makeId(),
-    title: 'test email 1',
+    title: 'test email 2',
     subject: 'subject',
     folder: 'inbox',
     lables: [],
@@ -36,7 +39,7 @@ const defaultEmails = [{
     to: null,
     date: new Date(),
     id: makeId(),
-    title: 'test email 1',
+    title: 'test email 3',
     subject: 'subject',
     folder: 'inbox',
     lables: [],
@@ -48,7 +51,7 @@ const defaultEmails = [{
     to: null,
     date: new Date(),
     id: makeId(),
-    title: 'test email 1',
+    title: 'test email 4',
     subject: 'subject',
     folder: 'inbox',
     lables: [],
@@ -59,9 +62,15 @@ const defaultEmails = [{
 
 ]
 
-function getDefaultEmails() {
+function getEmails() {
+
+    let emails = storageService.loadFromStorage(EMAIL_KEY)
+    if (!emails) {
+        emails = defaultEmails
+        storageService.saveToStorage(emails)
+    }
   
-    return defaultEmails
+    return emails
 }
 
 

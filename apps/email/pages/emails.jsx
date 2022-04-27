@@ -16,7 +16,7 @@ export class Emails extends React.Component{
 
     componentDidMount() {
 
-        const emails = emailService.getDefaultEmails()
+        const emails = emailService.getEmails()
         this.setState({emails})
         
     }
@@ -32,6 +32,17 @@ export class Emails extends React.Component{
     onSet = (searchBy) => {
         this.setState({searchBy}, this.loadEmails)
         console.log(this.state.searchBy)
+    }
+
+   
+
+    toggleStar = (ID) => {
+
+        const emails = this.state.emails
+        const index = emails.findIndex((email) => email.id === ID)
+        emails[index].isStar = !emails[index].isStar
+        emailService.updateEmails(emails)
+
     }
 
 

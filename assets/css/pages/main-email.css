@@ -16,6 +16,7 @@
 
 .email-priview {
     display: flex; 
+    gap: 4%;
     padding-left: 10px;
     flex-grow: 1;
      
@@ -53,5 +54,12 @@
     height: 25px;
     font-size: 20px;
     margin-left: 10px; 
+}
+
+.email-not-star {
+    opacity: 25%;
+}
+.email-not-read {
+    font-weight: 950;
 }
 
