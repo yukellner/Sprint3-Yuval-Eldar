@@ -30,11 +30,10 @@ export class NoteAdd extends React.Component {
     onSaveNote = (ev) => {
         ev.preventDefault()
         noteService.saveNote(this.state.note)
-        console.log( 'props',this.props.note )
-
-            // .then(() => {
-            //     this.props.history.push('/note')
-            // })
+            .then(() => {
+                console.log('saved')
+                this.props.history.push('/keep')
+            })
     }
 
     handleChange = ({ target }) => {
