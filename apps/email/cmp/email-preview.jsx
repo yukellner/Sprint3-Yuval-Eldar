@@ -7,6 +7,6 @@ export function EmailPriview(props) {
  
 
     return <section className="email-priview">
-        <p>{email.title}</p> <p>Sent At: {date}</p> 
+        <p>{email.title} </p> <p>  Sent At: {date}</p> 
     </section>
 }
