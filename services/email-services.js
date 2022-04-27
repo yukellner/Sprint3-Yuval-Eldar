@@ -23,7 +23,7 @@ const defaultEmails = [{
     title: 'test email 2',
     subject: 'subject',
     folder: 'inbox',
-    isStar: true,
+    isStar: false,
     isRead: false,
     txt: 'txt'
 },
@@ -37,17 +37,19 @@ const defaultEmails = [{
     isStar: false,
     isRead: true,
     txt: 'txt'
-},{
+},
+{
     to: null,
     date: new Date(),
     id: makeId(),
     title: 'test email 4',
     subject: 'subject',
     folder: 'inbox',
-    isStar: false,
+    isStar: true,
     isRead: false,
     txt: 'txt'
-},{
+},
+{
     to: null,
     date: new Date(),
     id: makeId(),
@@ -57,7 +59,8 @@ const defaultEmails = [{
     isStar: false,
     isRead: false,
     txt: 'txt'
-},]
+},
+]
 
 function getDefaultEmails() {
     console.log('hello from service');
