@@ -1,4 +1,4 @@
-
+const { Link } = ReactRouterDOM
 
 export function EmailPriview(props) {
 
