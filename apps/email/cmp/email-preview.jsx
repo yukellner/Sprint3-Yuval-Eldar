@@ -2,7 +2,12 @@
 
 export function EmailPriview(props) {
 
+
+    const {email} = props
+
     return <section className="email-priview">
-        <p>title: {props.email.title}</p> <p>sent at: {props.email.date} </p>
+        <p>{email.date}</p> 
+      
+        
     </section>
 }
