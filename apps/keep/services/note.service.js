@@ -9,7 +9,7 @@ export const noteService = {
     getNextnoteId,
     getNotes,
     saveNote,
-    initialSaveNotes
+    initialSaveNotes,
 }
 
 const KEY = 'notesDB'
@@ -19,12 +19,12 @@ var gNotes = [
     { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
 
 function initialSaveNotes() {
-    // _saveToStorage(gNotes)
+    _saveToStorage(gNotes)
 }
 
 function getNotes() {
     let notes = _loadFromStorage()
-    return notes
+    return Promise.resolve(notes) 
 }
 
 function query(filterBy) {
@@ -69,8 +69,9 @@ function remove(noteId) {
 
 function saveNote(note) {
     console.log('note', note)
-    if (note.id) return _update(note)
-    else return _add(note)
+    // if (note.id) return _update(note)
+    // else 
+    return _add(note)
 }
 
 function _add(noteToAdd) {
@@ -113,6 +114,7 @@ function _createnotes() {
 }
 
 function _saveToStorage(notes) {
+    console.log('before save to storage', notes)
     storageService.saveToStorage(KEY, notes)
 }
 
