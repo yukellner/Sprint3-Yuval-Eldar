@@ -4,11 +4,12 @@ import { utilService } from './util.service.js'
 export const noteService = {
     getById,
     query,
-    savenote,
     remove,
     getVendors,
     getNextnoteId,
-    getNotes
+    getNotes,
+    saveNote,
+    initialSaveNotes
 }
 
 const KEY = 'notesDB'
@@ -17,9 +18,11 @@ var gNotes = [
     { id: "n102", type: "note-img", info: { url: "https://cdn.britannica.com/16/177616-050-0167E767/Casablanca-Morocco.jpg", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
     { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
 
+function initialSaveNotes() {
+    _saveToStorage(gNotes)
+}
 
 function getNotes() {
-    console.log('im here')
     return gNotes
 }
 
@@ -63,14 +66,15 @@ function remove(noteId) {
     return Promise.resolve()
 }
 
-function savenote(note) {
+function saveNote(note) {
+    console.log('note',note)
     if (note.id) return _update(note)
     else return _add(note)
 }
 
 function _add(noteToAdd) {
     let notes = _loadFromStorage()
-    const note = _createnote(noteToAdd.vendor, noteToAdd.speed)
+    const note = _createnote(noteToAdd)
     notes = [note, ...notes]
     _saveToStorage(notes)
     return Promise.resolve()
@@ -87,13 +91,13 @@ function getVendors() {
     return gNotes
 }
 
-function _createnote(vendor, speed = utilService.getRandomIntInclusive(1, 200)) {
+function _createnote(note) {
+    if(note.type === 'note-txt')
     return {
         id: utilService.makeId(),
-        vendor,
-        speed,
-        desc: utilService.makeLorem(),
-        ctg: (Math.random() > 0.5) ? 'bestSeller' : 'stam'
+        type: note.type,
+        isPinned: false,
+        info: note.text,
     }
 }
 

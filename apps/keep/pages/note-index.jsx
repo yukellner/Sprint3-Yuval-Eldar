@@ -9,15 +9,19 @@ export class NoteIndex extends React.Component{
         note: null 
     }
 
+    componentDidMount() {
+        noteService.initialSaveNotes()
+    }
+
+    
+
 
     render() {
 
         return <section>
 
-            <h1>hello</h1>
 
             <NoteList/>
-        <h1 className="keep-container">keep</h1>
           </section>
     }
 }

@@ -14,7 +14,6 @@ export class Keep extends React.Component{
         return <section>
 
             <Keep/>
-        <h1 className="keep-container">keep</h1>
           </section>
     }
 }

@@ -1,9 +1,33 @@
 .note-card{
     border: 1px black solid;
     width: 10rem;
+    width: 100%;
+    padding: 5px;
+    height: 200px;
 }
 
 .note-card img {
-    width: 100px;
+    width: 100%;
+
+}
+
+.notes-container{
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    justify-content: space-around;
+    gap: 20px;
+
+}
+
+.notes-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pick-col{
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px black solid;
 }
 

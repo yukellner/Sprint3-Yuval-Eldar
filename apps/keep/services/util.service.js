@@ -9,6 +9,7 @@ export const utilService = {
 }
 
 function makeId(length = 6) {
+    console.log('makeid')
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
