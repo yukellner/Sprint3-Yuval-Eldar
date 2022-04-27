@@ -3,8 +3,8 @@
 // import { About } from './pages/about.jsx'
 // import { CarDetails } from './pages/car-details.jsx'
 // import {CarEdit} from './pages/car-edit.jsx'
-import { Emails } from './pages/emails.jsx'
-import { Keep } from './pages/keep.jsx'
+import { Emails } from './apps/email/pages/emails.jsx'
+import { Keep } from './apps/keep/pages/keep-app.jsx'
 import { AppHome } from './pages/app-home.jsx'
 import { AppHeader } from './cmps/app-header.jsx'
 
