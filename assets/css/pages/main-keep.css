@@ -1,0 +1,9 @@
+.note-card{
+    border: 1px black solid;
+    width: 10rem;
+}
+
+.note-card img {
+    width: 100px;
+}
+
