@@ -3,32 +3,34 @@
 // import { About } from './pages/about.jsx'
 // import { CarDetails } from './pages/car-details.jsx'
 // import {CarEdit} from './pages/car-edit.jsx'
-// import { AppHeader } from './cmps/app-header.jsx'
-// import { AppFooter } from './cmps/app-footer.jsx'
+import { Emails } from './pages/emails.jsx'
+import { Keep } from './pages/keep.jsx'
 import { AppHome } from './pages/app-home.jsx'
+import { AppHeader } from './cmps/app-header.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 
 export function App() {
+    
     return <section>
 
 
-        <AppHome/>
-    </section>
     
-    // <Router>
-    //    {/* <AppHeader />  */}
-    //     <section className="app">
-    //         <Switch>
-    //             <Route path="/car/edit/:carId?" component={CarEdit}/>
-    //             <Route path="/car/:carId" component={CarDetails}/>
-    //             <Route path="/car" component={CarApp} />
-    //             <Route path="/about" component={About} />
-    //             <Route path="/" component={Home} />
-    //         </Switch>
-    //     </section>
-    //     <AppFooter />
-    //     <UserMsg />
-    // </Router>
+    <Router>
+       <AppHeader /> 
+        <section className="app">
+            <Switch>
+                {/* <Route path="/car/edit/:carId?" component={}/>
+                <Route path="/car/:carId" component={CarDetails}/> */}
+                <Route path="/emails" component={Emails} />
+                <Route path="/keep" component={Keep} />
+                <Route path="/" component={AppHome} />
+            </Switch>
+        </section>
+        {/* <AppFooter /> */}
+        {/* <UserMsg /> */}
+    </Router>
+    </section>
+        
 }
