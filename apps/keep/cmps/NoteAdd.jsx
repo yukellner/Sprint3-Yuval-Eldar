@@ -22,7 +22,7 @@ export class NoteAdd extends React.Component {
                 style: null,
                 label: null,
                 todos: [{
-                    txt: null, doneAt: null
+                    txt: null, doneAt: null, isDone: false, id: null
 
                 }]
             },

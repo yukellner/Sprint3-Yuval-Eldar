@@ -1,12 +1,24 @@
-export class NewTodo extends React.Component {
+import { utilService } from '../../services/util.service.js'
 
+
+
+export class NewTodo extends React.Component {
     state = {
         todo: null
     }
 
     handleChange1 = ({ target }) => {
 
-        this.setState({ todo: {txt: target.value} })
+        this.setState({ todo: {
+            txt: target.value,
+            doneAt: Date.now(),
+            isDone: false, 
+            id: utilService.makeId()
+
+
+        
+        } })
+        // txt: null, doneAt: null, isDone: false, id: null
 
         
         
