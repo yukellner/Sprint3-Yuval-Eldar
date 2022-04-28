@@ -19,6 +19,7 @@ export function EmailPriview(props) {
                 </Link>
                     <p className={readClass}>{email.from}  </p>
                 <p>{date}</p> 
+                <button className="unread-button" onClick={()=> props.toggleRead(email.id)}>{(email.isRead)? '✉' :' 📜'}</button>
                 
                 </section>
            

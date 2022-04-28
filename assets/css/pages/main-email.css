@@ -45,9 +45,12 @@
     min-width: 200px;
     background-color: rgb(225, 164, 164);
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: 18px;
     margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 
@@ -79,4 +82,67 @@
     text-decoration: none;
     color: #000;
 }
+
+.unread-button {
+    position:fixed;
+    right: 20px;
+    margin-top: 15px;
+
+    width: 40px;
+    height: 30px;
+
+}
+
+.email-menue-option {
+    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
+    border-radius: 20px;
+    padding: 8px;
+    padding-left: 12px;
+    display: flex;
+    
+}
+
+.email-menue-option:hover {
+    box-shadow: 0 0 10px 0 rgba(86, 41, 81, 0.35); 
+}
+
+.email-menue-compose {
+    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 12px;
+    display: flex;
+}
+
+.email-menue-compose:hover {
+    box-shadow: 0 0 18px 0 rgba(146, 8, 8, 0.459); 
+}
+
+.compose-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.compose-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px;
+    margin: 5px;
+}
+
+.compose-txt-input {
+    width: 350px;
+    height: 220px;
+}
+
+.compose-send-button {
+    width: 50px;
+}
+
+.compose-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 

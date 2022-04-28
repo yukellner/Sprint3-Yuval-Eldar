@@ -11,6 +11,7 @@ export class EmailDetail extends React.Component {
 
     componentDidMount() {
         this.loadEmail() 
+        console.log(this.state.email);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -42,7 +43,7 @@ export class EmailDetail extends React.Component {
             {this.state.email.labels && this.state.email.labels.map((label) => <div className={`label-${label}`}>{label}</div> )} 
             </div>
             <h3>from:  {this.state.email.from}</h3>
-            <h3>Subject: {this.state.email.subject}</h3>
+            <h3>Subject: {this.state.email.title}</h3>
             <h3>Arrived at:{this.state.email.date} </h3>
             <p>{this.state.email.txt}</p>
 

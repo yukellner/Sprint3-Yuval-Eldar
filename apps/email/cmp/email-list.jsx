@@ -17,7 +17,7 @@ export class EmailList extends React.Component {
         }
 
          markRead = (id) => {
-              console.log('read');
+
               const emails = emailService.getEmails()
               const index = emails.findIndex((email) => email.id === id)
               emails[index].isRead = true
@@ -26,13 +26,22 @@ export class EmailList extends React.Component {
               
             }
 
+        toggleRead = (id) => {
+                const emails = emailService.getEmails()
+                const index = emails.findIndex((email) => email.id === id)
+                emails[index].isRead = !emails[index].isRead
+                emailService.updateEmails(emails)
+                this.props.loadEmails()
+                
+         }
+
         render() {
 
                 const emails = this.props.emails
 
                 return <section className="email-list">
                         {emails.map((email) => <EmailPriview email={email} key={email.id} 
-                        toggleStar={this.toggleStar} markRead={this.markRead} />)}
+                        toggleStar={this.toggleStar} markRead={this.markRead} toggleRead={this.toggleRead}/>)}
 
                 </section>
         }

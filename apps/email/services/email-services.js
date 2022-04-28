@@ -7,6 +7,9 @@ export const emailService = {
   updateEmails,
   getById,
   markRead,
+  sendMail,
+  draftMail,
+  testFunc,
 };
 
 const EMAIL_KEY = "mister_email";
@@ -21,7 +24,6 @@ const defaultEmails = [
     date: new Date(),
     id: makeId(),
     title: "tel aviv ",
-    subject: "subject",
     folder: "inbox",
     labels: [],
     isStar: Math.random() > 0.5 ? false : true,
@@ -34,7 +36,6 @@ const defaultEmails = [
     date: new Date(),
     id: makeId(),
     title: "sababa",
-    subject: "subject",
     folder: "inbox",
     labels: [],
     isStar: Math.random() > 0.5 ? false : true,
@@ -47,7 +48,6 @@ const defaultEmails = [
     date: new Date(),
     id: makeId(),
     title: "test email 3",
-    subject: "subject",
     folder: "inbox",
     labels: [],
     isStar: Math.random() > 0.5 ? false : true,
@@ -60,7 +60,6 @@ const defaultEmails = [
     date: new Date(),
     id: makeId(),
     title: "test email 4",
-    subject: "subject",
     folder: "inbox",
     labels: [],
     isStar: Math.random() > 0.5 ? false : true,
@@ -101,7 +100,9 @@ function query(filterBy) {
   if (filterBy) {
       if (filterBy.isStar) {
         emails = emails.filter((email) => email.isStar);
-
+    }
+    if (filterBy.folder) {
+      emails = emails.filter((email) => email.folder === filterBy.folder)
     }
     let { title } = filterBy;
     emails = emails.filter((email) => {
@@ -135,4 +136,46 @@ function markRead(id) {
   const index = emails.findIndex((email) => email.id === id);
   emails[index].isRead = true;
   updateEmails(emails);
+}
+
+function sendMail(email) {
+  const sentEmail =  {
+    to: email.to,
+    from: 'you',
+    date: new Date(),
+    id: makeId(),
+    title: email.title,
+    folder: "sent",
+    labels: email.labels,
+    isStar: false ,
+    isRead: true,
+    txt: email.txt,
+  }
+  const emails = getEmails()
+  emails.push(sentEmail)
+  storageService.saveToStorage(EMAIL_KEY,emails)
+
+}
+
+function draftMail(email) {
+  const sentEmail =  {
+    to: email.to,
+    from: 'you',
+    date: new Date(),
+    id: makeId(),
+    title: email.title,
+    folder: "draft",
+    labels: email.labels,
+    isStar: false ,
+    isRead: true,
+    txt: email.txt,
+  }
+  const emails = getEmails()
+  emails.push(sentEmail)
+  storageService.saveToStorage(EMAIL_KEY,emails)
+
+}
+
+function testFunc() {
+  console.log('test function');
 }

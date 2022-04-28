@@ -3,6 +3,7 @@ import { EmailList } from "../cmp/email-list.jsx"
 import { EmailSideBar } from "../cmp/email-side-bar.jsx"
 import { EmailFilter } from "../cmp/email-filter-header.jsx"
 import { EmailDetail } from "../cmp/email-detail.jsx"
+import { ComposeEmail } from "../cmp/email-compose.jsx"
 
 
 
@@ -18,6 +19,7 @@ export class Emails extends React.Component {
             title: '',
             isStar: false,
             isRead: false,
+            folder:null,
             lables: []
         },
 
@@ -38,7 +40,6 @@ export class Emails extends React.Component {
                 this.setState({ emails })
             })
 
-        console.log(this.state.searchVal);
     }
 
 
@@ -54,16 +55,29 @@ export class Emails extends React.Component {
        
     }
 
-    inboxFolder = () => {
+    navigateFolder = (folder) => {
         this.setState({
             searchVal: {
                 title: '',
                 isStar: false,
                 isRead: false,
-                lables: []
+                lables: [],
+                folder:folder,
             }, emails: this.state.emails
         }, () => this.loadEmails())
        
+    }
+
+    sentFolder = () => {
+        this.setState({
+            searchVal: {
+                title: '',
+                isStar: false,
+                isRead: false,
+                lables: [],
+                folder:'sent',
+            }, emails: this.state.emails
+        }, () => this.loadEmails())
     }
 
     render() {
@@ -71,9 +85,11 @@ export class Emails extends React.Component {
         return <section className="email-main">
             <EmailFilter handleChange={this.handleChange} />
             <div className="email-core">
-                <Link to="/emails" className="side-bar-link"><EmailSideBar starFolder={this.starFolder} inboxFolder={this.inboxFolder} /></Link>
+                <Link to="/emails" className="side-bar-link"><EmailSideBar
+                 starFolder={this.starFolder} navigateFolder={this.navigateFolder} /></Link>
                 <section>
                     <Switch>
+                        <Route path="/emails/compose" exact >  <ComposeEmail sendMail={emailService.sendMail}/> </Route>
                         <Route path='/emails/:id' render={(props) => <EmailDetail {...props} />} />
                         <Route path="/emails"  > <EmailList emails={this.state.emails} loadEmails={this.loadEmails} isStar={this.state.searchVal.isStar} /> </Route>
                     </Switch>
