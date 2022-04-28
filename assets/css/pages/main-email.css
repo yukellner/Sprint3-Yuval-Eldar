@@ -1,4 +1,6 @@
-
+body {
+    font-family: Arial;
+  }
 
 
 .email-main {
@@ -25,6 +27,7 @@
     flex-grow: 1;
     min-width: 380px;
     width: 100%;
+   
     border-radius: 5px;
 }
 
@@ -74,13 +77,17 @@
 .email-menue-option {
     height: 25px;
     font-size: 18px;
-    margin-left: 10px;  
+    margin-left: 10px; 
+    display: flex;
+    align-items: center; 
 }
 
 .email-menue-compose {
     height: 25px;
     font-size: 20px;
     margin-left: 10px; 
+    display: flex;
+    align-items: center;
 }
 
 .email-not-star {
@@ -160,6 +167,44 @@
 .compose-buttons {
     display: flex;
     justify-content: space-between;
+    text-decoration: none;
+    color: #000;
+}
+
+.miss-email-filter-header {
+    box-shadow: 0 0 18px 0 rgba(80, 29, 75, 0.382);
+    width: 200px;
+    height: 25px;
+    background-color: rgb(225, 164, 164);
+    border-radius: 10px;
+    display: flex;
+    color: rgb(46, 80, 82);
+    justify-content: center;
+    font-weight: 600;
+    margin-left: 5px;
+    
+}
+
+@media (max-width: 750px) {
+    .unread-button {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .email-filter-form {
+        flex-direction: column;
+        width: 250px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 100px;
+        gap: 20px;
+    }
+
+   
+
 }
 
 

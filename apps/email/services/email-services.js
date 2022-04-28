@@ -10,7 +10,8 @@ export const emailService = {
   sendMail,
   draftMail,
   testFunc,
-  moveToTrash
+  moveToTrash,
+  toggleRead,
 };
 
 const EMAIL_KEY = "mister_email";
@@ -136,6 +137,14 @@ function markRead(id) {
   const index = emails.findIndex((email) => email.id === id);
   emails[index].isRead = true;
   updateEmails(emails);
+}
+
+function toggleRead(id) {
+  const emails = getEmails()
+  const index = emails.findIndex((email) => email.id === id)
+  emails[index].isRead = !emails[index].isRead
+  updateEmails(emails)
+  
 }
 
 function moveToTrash(id) {
