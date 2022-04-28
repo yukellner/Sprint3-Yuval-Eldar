@@ -10,6 +10,7 @@ export const noteService = {
     getNotes,
     saveNote,
     initialSaveNotes,
+    updateNote
 }
 
 const KEY = 'notesDB'
@@ -80,6 +81,10 @@ function _add(noteToAdd) {
     notes = [note, ...notes]
     _saveToStorage(notes)
     return Promise.resolve()
+}
+
+function updateNote(noteToUpdate){
+    _update(noteToUpdate)
 }
 
 function _update(noteToUpdate) {

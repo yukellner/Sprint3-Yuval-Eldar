@@ -1,6 +1,7 @@
 
 import { noteService } from '../services/note.service.js'
 import { utilService } from '../services/util.service.js'
+import { TodoLine } from '../cmps/TodoLine.jsx'
 
 
 
@@ -17,9 +18,17 @@ export function NoteTodo({ note, loadNotes }) {
     return <section>
         <div className="note-card">
 
-            { note.info.todos.map(todo => {
+            {note.info.todos.map(todo => {
 
-                return <h4 key={utilService.makeId()}>{todo.txt}</h4>
+                return <div key={utilService.makeId()}>
+
+
+                    <TodoLine todo={todo} note={note}/>
+
+                    
+
+                </div>
+
 
             })}
 
