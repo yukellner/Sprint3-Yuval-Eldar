@@ -178,10 +178,33 @@ body {
     background-color: rgb(225, 164, 164);
     border-radius: 10px;
     display: flex;
+    color: rgb(46, 80, 82);
     justify-content: center;
     font-weight: 600;
     margin-left: 5px;
     
+}
+
+@media (max-width: 750px) {
+    .unread-button {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .email-filter-form {
+        flex-direction: column;
+        width: 250px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 100px;
+        gap: 20px;
+    }
+
+   
+
 }
 
 
