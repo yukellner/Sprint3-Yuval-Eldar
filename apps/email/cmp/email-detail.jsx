@@ -20,7 +20,12 @@ export class EmailDetail extends React.Component {
         }
     }
 
-
+    markAsUnread = () => {
+        const emails = emailService.getEmails()
+        const index = emails.findIndex((email) => email.id === this.state.email.id)
+        emails[index].isRead = false
+        emailService.updateEmails(emails)
+    }
 
 
     loadEmail = () => {
@@ -49,8 +54,9 @@ export class EmailDetail extends React.Component {
             <p>{this.state.email.txt}</p>
 
             <Link to="/emails" >
-            <button onClick={emailService.moveToTrash(this.state.email.id)}>🗑</button>
+            <button onClick={()=> emailService.moveToTrash(this.state.email.id)}>🗑</button>
             </Link>
+            <button onClick={()=> this.markAsUnread(this.state.email.id)}>Mark as Unread</button>
 
         </section>
 

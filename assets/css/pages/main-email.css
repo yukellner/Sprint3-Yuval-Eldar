@@ -160,6 +160,8 @@
 .compose-buttons {
     display: flex;
     justify-content: space-between;
+    text-decoration: none;
+    color: #000;
 }
 
 

@@ -51,7 +51,7 @@ export class Emails extends React.Component {
     }
 
     starFolder = () => {
-        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, isStar: true }, emails: this.state.emails }), () => this.loadEmails())
+        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, isStar: true , folder:null}, emails: this.state.emails }), () => this.loadEmails())
 
     }
 

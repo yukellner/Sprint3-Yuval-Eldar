@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-services.js"
-
+const { Link } = ReactRouterDOM
 
 export class ComposeEmail extends React.Component {
 
@@ -54,10 +54,10 @@ export class ComposeEmail extends React.Component {
             <input type="text" placeholder="Subject:"  onChange={this.updateSubject}/>
             <br />
             <textarea className="compose-txt-input"  onChange={this.updateTxt} name="" id="" cols="30" rows="10"></textarea>
-            <div className="compose-buttons">
+            <Link to="/emails" className="compose-buttons">
             <button  onClick={() => emailService.draftMail(this.newEmail)}>Save to Draft</button>
             <button className="compose-send-button" onClick={() => emailService.sendMail(this.newEmail)}>Send</button>
-            </div>
+            </Link>
 
         </from>
     }
