@@ -7,65 +7,78 @@ import { EmailDetail } from "../cmp/email-detail.jsx"
 
 
 const Router = ReactRouterDOM.HashRouter
-const { Route, Switch, Link} = ReactRouterDOM
+const { Route, Switch, Link } = ReactRouterDOM
 
-export class Emails extends React.Component{
+export class Emails extends React.Component {
 
 
     state = {
         emails: [],
-        searchVal:  {
-            title:'',
-            isStar: null,
-            isRead: null,
+        searchVal: {
+            title: '',
+            isStar: false,
+            isRead: false,
             lables: []
         },
-        selectedEmailID: null
 
     }
 
     componentDidMount() {
 
         const emails = emailService.getEmails()
-        this.setState({emails})
-        
+        this.setState({ emails })
+
     }
 
-   
+
 
     loadEmails = () => {
         emailService.query(this.state.searchVal)
             .then(emails => {
                 this.setState({ emails })
             })
+
+        console.log(this.state.searchVal);
     }
 
 
-    handleChange = ({target}) => {
+    handleChange = ({ target }) => {
         const value = target.value
-        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, title: value } }), this.loadEmails())
+        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, title: value }, emails: this.state.emails }), () => this.loadEmails())
 
-        
+
     }
 
+    starFolder = () => {
+        this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, isStar: true }, emails: this.state.emails }), () => this.loadEmails())
+       
+    }
 
-    selectEmail = (ID) => {
-        this.setState({selectedEmailID: ID})
+    inboxFolder = () => {
+        this.setState({
+            searchVal: {
+                title: '',
+                isStar: false,
+                isRead: false,
+                lables: []
+            }, emails: this.state.emails
+        }, () => this.loadEmails())
+       
     }
 
     render() {
 
         return <section className="email-main">
-            <EmailFilter handleChange={this.handleChange}/>
+            <EmailFilter handleChange={this.handleChange} />
             <div className="email-core">
-                <EmailSideBar/>
+                <Link to="/emails" className="side-bar-link"><EmailSideBar starFolder={this.starFolder} inboxFolder={this.inboxFolder} /></Link>
                 <section>
                     <Switch>
-                        <Route path='/emails/:id' render={(props) => <EmailDetail {...props}/>}/>
-                        <Route path="/emails"  > <EmailList emails={this.state.emails}/> </Route>
+                        <Route path='/emails/:id' render={(props) => <EmailDetail {...props} />} />
+                        <Route path="/emails"  > <EmailList emails={this.state.emails} loadEmails={this.loadEmails} isStar={this.state.searchVal.isStar} /> </Route>
                     </Switch>
                 </section>
             </div>
-           </section>
+        </section>
     }
 }

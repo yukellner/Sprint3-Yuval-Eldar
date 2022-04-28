@@ -21,6 +21,7 @@
     padding-left: 10px;
     flex-grow: 1;
     min-width: 380px;
+    width: 100%;
   
      
 
@@ -30,6 +31,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width: 100vw;
 
 
 }
@@ -69,6 +71,11 @@
 }
 
 .email-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.side-bar-link {
     text-decoration: none;
     color: #000;
 }
