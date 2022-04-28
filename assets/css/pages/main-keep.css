@@ -1,9 +1,15 @@
 .note-card{
     border: 1px black solid;
-    width: 10rem;
     width: 100%;
-    padding: 5px;
     height: 200px;
+    border-radius: 10px;
+    box-sizing: content-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+
 }
 
 .note-card img {
@@ -12,9 +18,14 @@
 }
 
 .notes-container{
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    /* grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) ); */
+
+
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     justify-content: space-around;
+    align-items: center;
     gap: 20px;
+    padding: 20px;
 
 }
 
@@ -30,4 +41,76 @@
     border-radius: 50%;
     border: 1px black solid;
 }
+
+.main-note-card{
+    height: 90%;
+}
+
+.footer-note-card{
+    padding: 5px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    /* margin-bottom: 2%; */
+    width: 100%;
+    display: block;
+    opacity: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    
+    
+    
+    
+}
+
+.footer-note-card:hover{
+    opacity: 100;
+}
+
+input[type='color'] {
+    padding: 0;
+    width: 150%;
+    height: 150%;
+    margin: -25%;
+    visibility:hidden;
+  }
+  
+  /* .cp_wrapper {
+    overflow: hidden;
+    width: 2em;
+    height: 2em;
+     border-radius: 50%;
+    box-shadow: 1px 1px 3px 0px grey;
+    margin: 1em;
+    border: 1px black solid;
+  }  */
+
+  .color-pic-con{
+    width: 20px;
+    height: 20px;
+    border: 0.5px solid rgb(54, 52, 52);
+    cursor: pointer;
+    border-radius: 50%;
+    
+    display: block;
+    margin: 0 5px;
+
+  }
+
+  .delete-note{
+      cursor: pointer;
+  }
+
+  .colors-container{
+      display: flex;
+      opacity: 0.2;
+      
+  }
+
+  .colors-container:hover{
+      opacity: 1;
+  }
+
+
 

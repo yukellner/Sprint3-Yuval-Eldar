@@ -106,7 +106,7 @@ export class NoteAdd extends React.Component {
 
                     <ToolsBar updateType={this.updateType} />
 
-                    {this.state.note.type && <DynamicCmp type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote}/>}
+                    {this.state.note.type && <DynamicCmp  type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote}/>}
 
 
 
@@ -127,7 +127,7 @@ function DynamicCmp({ type, handleChange ,onSaveTodoNote}) {
 
     switch (type) {
         case 'note-txt':
-            return <TextInpt handleChange={handleChange} />
+            return <TextInpt  handleChange={handleChange} />
         case 'note-todos':
             return <TodosInpt handleChange={handleChange} onSaveTodoNote={onSaveTodoNote}/>
         case 'note-img':
