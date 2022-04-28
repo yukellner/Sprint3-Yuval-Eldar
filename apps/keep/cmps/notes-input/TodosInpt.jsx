@@ -1,7 +1,6 @@
-
-
 import { NewTodo } from './NewTodo.jsx'
 import { utilService } from '../../services/util.service.js'
+import { ColorPicker } from '../../cmps/viewCard/ColorPicker.jsx'
 
 
 export class TodosInpt extends React.Component {
@@ -31,11 +30,11 @@ export class TodosInpt extends React.Component {
     render() {
 
         return <section>
-            <h1>todo</h1>
             {this.state.todos.map(todo => {
                 return <h3 key={utilService.makeId()}>{todo.txt}</h3>
             })}
-            <NewTodo onAddTodo={this.onAddTodo} />
+            <NewTodo onAddTodo={this.onAddTodo}/>
+
             <button onClick={this.saveTo}>create card</button>
         </section>
     }

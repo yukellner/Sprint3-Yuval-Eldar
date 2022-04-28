@@ -4,6 +4,7 @@ import { ToolsBar } from '../cmps/ToolsBar.jsx'
 import { ImgInpt } from '../cmps/notes-input/ImgInpt.jsx'
 import { TodosInpt } from '../cmps/notes-input/TodosInpt.jsx'
 import { TextInpt } from '../cmps/notes-input/TextInpt.jsx'
+import { ColorPicker } from '../cmps/viewCard/ColorPicker.jsx'
 
 
 const { Link } = ReactRouterDOM
@@ -111,9 +112,19 @@ export class NoteAdd extends React.Component {
 
 
 
-                    <ul className="pick-col" ><a>pick a colors</a></ul>
-                    <button>add</button>
+                    {/* <ul className="pick-col" ><a>pick a colors</a></ul> */}
+                    <ColorPicker className="choose-color"/>
 
+                    <button className="add-note" ><i class="fa-solid fa-file-circle-plus"></i></button>
+
+
+
+                  
+
+
+                    
+
+                    
                 </form>
             </div>
 

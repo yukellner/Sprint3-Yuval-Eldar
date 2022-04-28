@@ -1,4 +1,6 @@
-export function TextInpt({handleChange}) {
+
+
+export function TextInpt({ handleChange }) {
     return <section>
 
         <h1>add text</h1>
