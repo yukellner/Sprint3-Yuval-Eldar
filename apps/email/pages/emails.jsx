@@ -19,7 +19,7 @@ export class Emails extends React.Component {
             title: '',
             isStar: false,
             isRead: false,
-            folder:null,
+            folder: null,
             lables: []
         },
 
@@ -52,7 +52,7 @@ export class Emails extends React.Component {
 
     starFolder = () => {
         this.setState((prevState) => ({ searchVal: { ...prevState.searchVal, isStar: true }, emails: this.state.emails }), () => this.loadEmails())
-       
+
     }
 
     navigateFolder = (folder) => {
@@ -62,10 +62,10 @@ export class Emails extends React.Component {
                 isStar: false,
                 isRead: false,
                 lables: [],
-                folder:folder,
+                folder: folder,
             }, emails: this.state.emails
         }, () => this.loadEmails())
-       
+
     }
 
     sentFolder = () => {
@@ -75,21 +75,35 @@ export class Emails extends React.Component {
                 isStar: false,
                 isRead: false,
                 lables: [],
-                folder:'sent',
+                folder: 'sent',
             }, emails: this.state.emails
         }, () => this.loadEmails())
     }
 
+    sortBy = ({ target }) => {
+        const val = target.value
+        let emails = this.state.emails
+        if (val === 'date') {
+            emails = emails.sort(function (email1, email2) { return (Date.parse(email1.date) > Date.parse(email2.date)) ? 1 : -1 })
+
+            this.setState({ emails })
+        } else {
+            emails = emails.sort(function (email1, email2) { return (email1.title > email2.title) ? 1 : -1 })
+            this.setState({ emails })
+        }
+    }
+
+
     render() {
 
         return <section className="email-main">
-            <EmailFilter handleChange={this.handleChange} />
+            <EmailFilter className="email-fliter" handleChange={this.handleChange} sortBy={this.sortBy} />
             <div className="email-core">
                 <Link to="/emails" className="side-bar-link"><EmailSideBar
-                 starFolder={this.starFolder} navigateFolder={this.navigateFolder} /></Link>
+                    starFolder={this.starFolder} navigateFolder={this.navigateFolder} /></Link>
                 <section>
                     <Switch>
-                        <Route path="/emails/compose" exact >  <ComposeEmail sendMail={emailService.sendMail}/> </Route>
+                        <Route path="/emails/compose" exact >  <ComposeEmail sendMail={emailService.sendMail} /> </Route>
                         <Route path='/emails/:id' render={(props) => <EmailDetail {...props} />} />
                         <Route path="/emails"  > <EmailList emails={this.state.emails} loadEmails={this.loadEmails} isStar={this.state.searchVal.isStar} /> </Route>
                     </Switch>
