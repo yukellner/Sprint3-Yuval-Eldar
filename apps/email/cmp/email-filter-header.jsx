@@ -14,11 +14,15 @@ export class EmailFilter extends React.Component {
 
     render() {
 
-        return <section className="email-filter">
-            <form action="">
+        return <section >
+            <form action="" className="email-filter-form">
                 <label htmlFor="">Search:</label>
                 <input onChange={this.props.handleChange} type="text" />
-                <button>🔍</button>
+                <select name="" id="" onChange={this.props.sortBy}>
+                    <option value="alphabet">Sort alphabetically </option>
+                    <option value="date">Sort by date </option>
+                </select>
+                {/* <button>🔍</button> */}
             </form>
         </section>
     }

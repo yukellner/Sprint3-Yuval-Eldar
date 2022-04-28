@@ -45,11 +45,12 @@ export class EmailDetail extends React.Component {
             <h3>from:  {this.state.email.from}</h3>
             <h3>Subject: {this.state.email.title}</h3>
             <h3>Arrived at:{this.state.email.date} </h3>
+            <br />
             <p>{this.state.email.txt}</p>
 
-            {/* <Link  >
-            <button onClick={this.moveToTrash(email.id)}>🗑</button>
-            </Link> */}
+            <Link to="/emails" >
+            <button onClick={emailService.moveToTrash(this.state.email.id)}>🗑</button>
+            </Link>
 
         </section>
 

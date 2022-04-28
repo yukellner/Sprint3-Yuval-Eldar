@@ -11,10 +11,10 @@ export function  EmailSideBar(props) {
         <div className="email-menue-compose">+ Compose </div>
         </Link>
         <div className="email-menue-option" onClick ={()=> props.navigateFolder('inbox')}>Inbox</div>
-        <div className="email-menue-option" onClick ={()=> props.navigateFolder('sent')}>Sent</div>
+        <div className="email-menue-option" onClick ={()=> props.navigateFolder('draft')}>Sent</div>
         <div className="email-menue-option" onClick ={props.starFolder}>Starred</div>
         <div className="email-menue-option" onClick ={()=> props.navigateFolder('draft')}>Draft </div>
-        <div className="email-menue-option">Trash</div>
+        <div className="email-menue-option" onClick ={()=> props.navigateFolder('trash')} >Trash</div>
     </section>
 
 
