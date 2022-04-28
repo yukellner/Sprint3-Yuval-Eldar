@@ -1,11 +1,15 @@
 import { noteService } from '../services/note.service.js'
 import { utilService } from '../services/util.service.js'
+import { ToolsBar } from '../cmps/ToolsBar.jsx'
+import { ImgInpt } from '../cmps/notes-input/ImgInpt.jsx'
+import { TodosInpt } from '../cmps/notes-input/TodosInpt.jsx'
+import { TextInpt } from '../cmps/notes-input/TextInpt.jsx'
 
 
 const { Link } = ReactRouterDOM
 
 export class NoteAdd extends React.Component {
-
+    // gTodo = null
     state = {
         note: {
 
@@ -18,35 +22,73 @@ export class NoteAdd extends React.Component {
                 style: null,
                 label: null,
                 todos: [{
-                    txt: null, doneAt: null,
+                    txt: null, doneAt: null
 
                 }]
             },
 
-
-
-
         }
+    }
+
+    onSaveTodoNote = (todosss) => {
+
+        console.log('todos for save', todosss)
+
+        // let todoss = this.state.note.info.todos
+
+        // todoss = todosss
+
+        
+        // todoss.push(todosss)
+        // this.setState({note:todosss})
+        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, todos: todosss } } }))
+
+        setTimeout(() => {
+            noteService.saveNote(this.state.note)
+            .then(() => {
+                this.props.loadNotes()
+                console.log('state',this.state)
+            })
+
+        },'500')
+
     }
     onSaveNote = (ev) => {
         ev.preventDefault()
-        noteService.saveNote(this.state.note)
+        if (this.state.note.type === 'note-todos') {
+
+
+
+        }
+        else{
+
+            
+            noteService.saveNote(this.state.note)
             .then(() => {
                 this.props.loadNotes()
-                console.log('saved')
             })
         }
-        
-        handleChange = ({ target }) => {
+    }
+
+    handleChange = ({ target }) => {
+
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
-        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
+        if (field != 'todo') {
+
+            this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
+        }
+        else this.gTodo = target.value
+
+
     }
-    
+
     updateType = (ev) => {
         const type = ev.target.name
-        this.setState((prevState) => ({ note: { ...prevState.note,  type: type } }))
-        console.log('state', this.state.note)
+        this.setState((prevState) => ({ note: { ...prevState.note, type: type } }))
+
+
+
 
     }
 
@@ -60,11 +102,15 @@ export class NoteAdd extends React.Component {
 
                 <form action="" className="notes-form" onSubmit={this.onSaveNote}>
 
-                    <input type="text" className="notes-filter" name="title" placeholder="add a note" onChange={this.handleChange} />
-                    <input type="text" className="notes-filter" name="text" placeholder="add a text" />
-                    <a onClick={this.updateType} name="note-text">text</a>
-                    <a onClick={this.updateType} name="img">img</a>
-                    <a onClick={this.updateType} name="todo">todo</a>
+                    {/* <TextInpt/> */}
+
+                    <ToolsBar updateType={this.updateType} />
+
+                    {this.state.note.type && <DynamicCmp type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote}/>}
+
+
+
+
                     <ul className="pick-col" ><a>pick a colors</a></ul>
                     <button>add</button>
 
@@ -73,5 +119,19 @@ export class NoteAdd extends React.Component {
 
 
         </section>
+    }
+}
+
+function DynamicCmp({ type, handleChange ,onSaveTodoNote}) {
+
+
+    switch (type) {
+        case 'note-txt':
+            return <TextInpt handleChange={handleChange} />
+        case 'note-todos':
+            return <TodosInpt handleChange={handleChange} onSaveTodoNote={onSaveTodoNote}/>
+        case 'note-img':
+            return <ImgInpt handleChange={handleChange} />
+
     }
 }

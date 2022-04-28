@@ -10,7 +10,7 @@ export class NoteIndex extends React.Component{
     }
 
     componentDidMount() {
-        // noteService.initialSaveNotes()
+        noteService.initialSaveNotes()
     }
 
     

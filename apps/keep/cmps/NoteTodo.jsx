@@ -1,11 +1,31 @@
 
-export function NoteTodo({ note }) {
+import { noteService } from '../services/note.service.js'
+import { utilService } from '../services/util.service.js'
+
+
+
+
+export function NoteTodo({ note, loadNotes }) {
+    function onDeleteNote() {
+        noteService.remove(note.id)
+        loadNotes()
+
+
+    }
+
+
     return <section>
         <div className="note-card">
 
+            { note.info.todos.map(todo => {
 
-            <h2>{note.info.label}</h2>
-            {/* <a className="delete-note" onClick={this.onDeleteNote()}>X</a> */}
+                return <h4 key={utilService.makeId()}>{todo.txt}</h4>
+
+            })}
+
+
+            <a className="delete-note" onClick={onDeleteNote}>X</a>
+
 
         </div>
     </section>

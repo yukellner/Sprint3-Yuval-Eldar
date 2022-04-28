@@ -94,14 +94,14 @@ function getVendors() {
 }
 
 function _createnote(note) {
-    if (note.type === 'note-txt') {
+   
 
         console.log('item', note)
         note.id = utilService.makeId()
         gNotes.push(note)
         return note
 
-    }
+    
 }
 
 function _createnotes() {
