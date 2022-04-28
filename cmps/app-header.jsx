@@ -27,10 +27,10 @@ class _AppHeader extends React.Component {
             {/* <h3 onClick={() => this.props.history.goBack()}>Cars R Us</h3> */}
 
             {/* {carsCount && <h3>Cars count: {carsCount}</h3>} */}
-            <nav>
-                <NavLink to="/" exact>Home</NavLink>
-                <NavLink to="/emails">Emails</NavLink>
-                <NavLink to="/keep" activeClassName="my-active">Keep</NavLink>
+            <nav className="app-header-nav">
+                <NavLink className="app-header-link" to="/" exact>Home</NavLink>
+                <NavLink className="app-header-link" to="/emails">Emails</NavLink>
+                <NavLink className="app-header-link" to="/keep" activeClassName="my-active">Keep</NavLink>
             </nav>
         </header>
     }

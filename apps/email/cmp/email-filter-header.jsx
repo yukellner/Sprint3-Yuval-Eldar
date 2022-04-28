@@ -16,6 +16,7 @@ export class EmailFilter extends React.Component {
 
         return <section >
             <form action="" className="email-filter-form">
+                <div className="miss-email-filter-header">≡  MissEmail   📬</div>
                 <label htmlFor="">Search:</label>
                 <input onChange={this.props.handleChange} type="text" />
                 <select name="" id="" onChange={this.props.sortBy}>

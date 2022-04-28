@@ -25,7 +25,7 @@ export function App() {
                 <Route path="/car/:carId" component={CarDetails}/> */}
                 <Route path="/emails" component={Emails} />
                 <Route path="/keep" component={NoteIndex} />
-                <Route path="/" component={AppHome} />
+                <Route path="/" className="app-home" component={AppHome} />
             </Switch>
         </section>
         {/* <AppFooter /> */}
