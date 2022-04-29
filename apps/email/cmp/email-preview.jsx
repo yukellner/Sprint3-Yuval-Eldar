@@ -19,8 +19,9 @@ export function EmailPriview(props) {
                 </Link>
                     <p className={readClass}>{email.from}  </p>
                 <p>{date}</p> 
+                {(props.folder === 'trash')? <button className="delete-button" onClick={()=> props.deleteEmail(email.id)}>Delete Email</button> :
                 <button className="unread-button" onClick={()=> props.toggleRead(email.id)}>{(email.isRead)? '✉' :' 📜'}</button>
-                
+                    }
                 </section>
            
 }

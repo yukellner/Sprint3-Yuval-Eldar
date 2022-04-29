@@ -42,7 +42,7 @@ export class Emails extends React.Component {
     loadEmails = () => {
         emailService.query(this.state.searchVal)
             .then(emails => {
-                this.setState({ emails }, this.sortBy(this.state.sortBy))
+                this.setState({ emails }, () => { this.sortBy(this.state.sortBy)})
             })
            
     }
@@ -87,7 +87,6 @@ export class Emails extends React.Component {
 
     sortBy = (val) => {
         if (!val) return 
-        console.log('state sort',this.state.sortBy);
         let emails = this.state.emails
         if (val === 'date') {
             emails = emails.sort(function (email1, email2) { return (Date.parse(email1.date) > Date.parse(email2.date)) ? 1 : -1 })
@@ -101,18 +100,22 @@ export class Emails extends React.Component {
 
     setSort = ({ target }) => {
         const sortBy = target.value
-        console.log('sort',sortBy);
         this.setState({sortBy})
         this.sortBy(sortBy)
      
-
     }
+
+    unreadCount = () => {
+        const unreadEmails = this.state.emails.filter((email) => !email.isRead)
+        return unreadEmails.length
+    }
+
 
 
     render() {
 
         return <section className="email-main">
-            <EmailFilter className="email-fliter" handleChange={this.handleChange} sortBy={this.setSort} />
+            <EmailFilter className="email-fliter" handleChange={this.handleChange} sortBy={this.setSort} unread={this.unreadCount()} />
             <div className="email-core">
                 <Link to="/emails" className="side-bar-link"><EmailSideBar
                     starFolder={this.starFolder} navigateFolder={this.navigateFolder} /></Link>
@@ -120,7 +123,7 @@ export class Emails extends React.Component {
                     <Switch >
                         <Route path="/emails/compose" exact >  <ComposeEmail sendMail={emailService.sendMail} /> </Route>
                         <Route path='/emails/:id' render={(props) => <EmailDetail {...props} />} />
-                        <Route path="/emails"  > <EmailList emails={this.state.emails} loadEmails={this.loadEmails} isStar={this.state.searchVal.isStar} /> </Route>
+                        <Route path="/emails"  > <EmailList emails={this.state.emails} loadEmails={this.loadEmails} isStar={this.state.searchVal.isStar} folder={this.state.searchVal.folder} /> </Route>
                     </Switch>
                 </section>
             </div>

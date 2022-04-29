@@ -35,13 +35,22 @@ export class EmailList extends React.Component {
                 
          }
 
+         deleteEmail = (id) => {
+                const emails = emailService.getEmails()
+                const index = emails.findIndex((email) => email.id === id)
+                emails.splice(index,1)
+                emailService.updateEmails(emails)
+                this.props.loadEmails()
+            
+        }
+
+       
         render() {
-
                 const emails = this.props.emails
-
+                
                 return <section className="email-list">
                         {emails.map((email) => <EmailPriview email={email} key={email.id} 
-                        toggleStar={this.toggleStar} markRead={this.markRead} toggleRead={this.toggleRead}/>)}
+                        toggleStar={this.toggleStar} markRead={this.markRead} toggleRead={this.toggleRead} folder={this.props.folder} deleteEmail={this.deleteEmail}/>)}
 
                 </section>
         }
