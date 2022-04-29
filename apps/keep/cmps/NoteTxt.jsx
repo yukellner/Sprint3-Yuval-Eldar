@@ -1,26 +1,81 @@
 
 import { noteService } from '../services/note.service.js'
+import { ColorPicker } from '../cmps/viewCard/ColorPicker.jsx'
+import { NoteEdit } from '../cmps/edit/NoteEdit.jsx'
 
 
-export function NoteTxt({ note,loadNotes }) {
+export class NoteTxt extends React.Component {
 
-    function onDeleteNote() {
+    state = {
+        styling: null,
+        viewIsOn: false
+    }
+
+    onDeleteNote = () => {
+        const { note, loadNotes } = this.props
         noteService.remove(note.id)
         loadNotes()
+        // noteService.remove(note.id)
+        // loadNotes()
+
+
+    }
+
+    updateBc = (bcColor) => {
+
+
+
+
+        // console.log('color', ev.target.value)
+
+        this.setState({ styling: { backgroundColor: bcColor } })
+        this.props.note.info.style = { backgroundColor: bcColor }
+        noteService.updateNote(this.props.note)
+
+    }
+
+    viewCard = () => {
+        this.setState({viewIsOn : true})
+
+    }
+
+    closeViewCard = () => {
+        this.setState({viewIsOn : false})
 
 
     }
 
 
 
-    return <section>
+    render() {
+        const { note, loadNotes } = this.props
 
-        <div className="note-card">
+        return <section>
+            <div className="note-card" onClick={this.viewCard} style={note.info.style}>
 
-            <h1>{note.info.title}</h1>
-            
 
-            <a className="delete-note" onClick={onDeleteNote}>X</a>
-        </div>
-    </section>
+                <div className="main-note-card">
+
+                    <h2>{note.info.title}</h2>
+                    <h3>{note.info.txt}</h3>
+
+
+                </div>
+                <div className="footer-note-card">
+
+                    <i className="fa-solid fa-xmark delete-note" onClick={this.onDeleteNote}></i>
+
+
+                    <div>
+                        <ColorPicker className="choose-color" note={note} updateBc={this.updateBc} />
+                        {/* <i className="fa-solid fa-palette" /> */}
+                        {/* <input type="color"  onChange={this.updateBc} /> */}
+                    </div>
+
+                </div>
+            </div>
+
+            {this.state.viewIsOn && <NoteEdit note={note} closeViewCard={this.closeViewCard} loadNotes={loadNotes}/>}
+        </section>
+    }
 }
