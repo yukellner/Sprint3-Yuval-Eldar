@@ -6,11 +6,12 @@ import { NoteList } from '../cmps/note-list.jsx'
 export class NoteIndex extends React.Component{
 
     state = {
-        note: null 
+        notes: null 
     }
 
     componentDidMount() {
-        // noteService.initialSaveNotes()
+        noteService.initialSaveNotes()
+        this.setState({notes : noteService.getNotes()})
     }
 
     
