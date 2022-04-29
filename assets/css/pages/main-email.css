@@ -116,6 +116,15 @@ body {
     height: 30px;
 
 }
+.delete-button {
+    position:fixed;
+    right: 20px;
+    margin-top: 15px;
+
+   
+    height: 30px;
+
+}
 
 .email-menue-option {
     margin-right: 7px;
@@ -216,6 +225,11 @@ body {
     margin-left: 12px;
 }
 
+.unread-div {
+   font-weight: 700;
+   margin-top: 4px;
+}
+
 .detail-buttons {
     display: flex;
     gap: 8px;
@@ -223,14 +237,14 @@ body {
 
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
     .unread-button {
         display: none;
     }
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
     .email-filter-form {
         flex-direction: column;
