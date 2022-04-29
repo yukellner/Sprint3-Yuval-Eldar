@@ -118,6 +118,7 @@ body {
 }
 
 .email-menue-option {
+    margin-right: 7px;
     box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
     border-radius: 20px;
     padding: 8px;
@@ -126,11 +127,35 @@ body {
     
 }
 
+
+ @keyframes email-menue-option {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  
+ @keyframes email-menue-compose {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.3);
+    }
+  }
+  
+
 .email-menue-option:hover {
     box-shadow: 0 0 10px 0 rgba(86, 41, 81, 0.35); 
+    background-color: rgba(224, 235, 101, 0.109);
+    animation: email-menue-option 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .email-menue-compose {
+    margin-right: 7px;
     box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
     border-radius: 20px;
     padding: 10px;
@@ -140,6 +165,8 @@ body {
 
 .email-menue-compose:hover {
     box-shadow: 0 0 18px 0 rgba(146, 8, 8, 0.459); 
+    background-color: rgba(227, 246, 17, 0.201);
+    animation: email-menue-option 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .compose-link {
@@ -151,7 +178,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin: 5px;
 }
 
@@ -183,6 +210,17 @@ body {
     font-weight: 600;
     margin-left: 5px;
     
+}
+
+.email-detail {
+    margin-left: 12px;
+}
+
+.detail-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: 12px;
+
 }
 
 @media (max-width: 750px) {

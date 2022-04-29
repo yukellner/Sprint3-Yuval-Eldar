@@ -4,6 +4,7 @@ import { NoteImg } from '../cmps/NoteImg.jsx'
 import { NoteTodo } from '../cmps/NoteTodo.jsx'
 import { NoteFilter } from '../cmps/note-filter.jsx'
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
+import {eventBusService} from "../../../services/event-bus-service.js"
 
 
 export class NoteList extends React.Component {
@@ -14,6 +15,7 @@ export class NoteList extends React.Component {
 
     componentDidMount() {
         this.loadNotes()
+        // eventBusService.on('emailToNote')
     }
 
     // onDeleteNoteb = (id) => {

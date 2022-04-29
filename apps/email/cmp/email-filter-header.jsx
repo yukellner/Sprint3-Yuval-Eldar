@@ -2,21 +2,13 @@
 
 export class EmailFilter extends React.Component {
 
-    // state = {
-    //     sraechVal: {
-    //         title:'',
-    //         isStar: null,
-    //         isRead: null,
-    //         lables: []
-    //     }
-    // }
-
 
     render() {
 
         return <section >
             <form action="" className="email-filter-form">
                 <div className="miss-email-filter-header">≡  MissEmail   📬</div>
+              
                 <div>
                     <label htmlFor="">Search:</label>
                     <input onChange={this.props.handleChange} type="text" />
