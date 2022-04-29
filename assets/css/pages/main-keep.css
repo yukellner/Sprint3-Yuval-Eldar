@@ -31,7 +31,7 @@
 
 .notes-form{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -118,6 +118,39 @@ input[type='color'] {
 
   .add-note{
       cursor: pointer;
+  }
+
+  .type-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .add-note-container{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      justify-content: space-between;
+      border: 1px black solid;
+  }
+
+  
+  .btn-type{
+      margin: 0 auto;
+      cursor: pointer;
+
+
+
+  }
+
+  .input-container{
+      border: 1px black solid;
+      display: flex;
+      justify-content: center;
+      width: 50%;
   }
 
 

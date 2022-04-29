@@ -14,7 +14,7 @@ export class NoteAdd extends React.Component {
     state = {
         note: {
 
-            type: 'note-txt',
+            type: 'note-todos',
             isPinned: false,
             info: {
                 txt: null,
@@ -39,19 +39,19 @@ export class NoteAdd extends React.Component {
 
         // todoss = todosss
 
-        
+
         // todoss.push(todosss)
         // this.setState({note:todosss})
         this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, todos: todosss } } }))
 
         setTimeout(() => {
             noteService.saveNote(this.state.note)
-            .then(() => {
-                this.props.loadNotes()
-                console.log('state',this.state)
-            })
+                .then(() => {
+                    this.props.loadNotes()
+                    console.log('state', this.state)
+                })
 
-        },'500')
+        }, '500')
 
     }
     onSaveNote = (ev) => {
@@ -61,13 +61,13 @@ export class NoteAdd extends React.Component {
 
 
         }
-        else{
+        else {
 
-            
+
             noteService.saveNote(this.state.note)
-            .then(() => {
-                this.props.loadNotes()
-            })
+                .then(() => {
+                    this.props.loadNotes()
+                })
         }
     }
 
@@ -78,6 +78,7 @@ export class NoteAdd extends React.Component {
         if (field != 'todo') {
 
             this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
+            console.log('state', this.state)
         }
         else this.gTodo = target.value
 
@@ -85,6 +86,7 @@ export class NoteAdd extends React.Component {
     }
 
     updateType = (ev) => {
+
         const type = ev.target.name
         this.setState((prevState) => ({ note: { ...prevState.note, type: type } }))
 
@@ -105,26 +107,30 @@ export class NoteAdd extends React.Component {
 
                     {/* <TextInpt/> */}
 
-                    <ToolsBar updateType={this.updateType} />
 
-                    {this.state.note.type && <DynamicCmp  type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote}/>}
+
+
+
+
+                    {this.state.note.type && <DynamicCmp type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote} />}
 
 
 
 
                     {/* <ul className="pick-col" ><a>pick a colors</a></ul> */}
-                    <ColorPicker className="choose-color"/>
+                    <ColorPicker className="choose-color" />
+                    <ToolsBar updateType={this.updateType} />
 
-                    <button className="add-note" ><i class="fa-solid fa-file-circle-plus"></i></button>
-
-
-
-                  
+                    <button className="add-note" ><i className="fa-solid fa-file-circle-plus"></i></button>
 
 
-                    
 
-                    
+
+
+
+
+
+
                 </form>
             </div>
 
@@ -133,16 +139,21 @@ export class NoteAdd extends React.Component {
     }
 }
 
-function DynamicCmp({ type, handleChange ,onSaveTodoNote}) {
+function DynamicCmp({ type, handleChange, onSaveTodoNote }) {
+
 
 
     switch (type) {
+
         case 'note-txt':
-            return <TextInpt  handleChange={handleChange} />
+            return <TextInpt handleChange={handleChange} />
         case 'note-todos':
-            return <TodosInpt handleChange={handleChange} onSaveTodoNote={onSaveTodoNote}/>
+            return <TodosInpt handleChange={handleChange} onSaveTodoNote={onSaveTodoNote} />
         case 'note-img':
             return <ImgInpt handleChange={handleChange} />
 
+        default:
+            alert('no match')
+            return <h1>hi</h1>
     }
 }

@@ -66,7 +66,7 @@ export class NoteTodo extends React.Component {
 
                 <div className="footer-note-card">
 
-                    <i class="fa-solid fa-xmark delete-note" onClick={this.onDeleteNote}></i>
+                    <i className="fa-solid fa-xmark delete-note" onClick={this.onDeleteNote}></i>
                     
 
                     <div>

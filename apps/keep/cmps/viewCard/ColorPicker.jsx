@@ -36,7 +36,7 @@ export class ColorPicker extends React.Component {
 
 
                 {this.colors.map(color =>
-                    <div className="color-pic-con" style={{ backgroundColor: color }} name={color} onClick= {() => this.handlecolorChange(color)}></div>
+                    <div className="color-pic-con" key={color} style={{ backgroundColor: color }} name={color} onClick= {() => this.handlecolorChange(color)}></div>
                 )}
 
             </div>
