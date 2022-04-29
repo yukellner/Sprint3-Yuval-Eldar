@@ -20,12 +20,16 @@ var gNotes = [
     { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
 
 function initialSaveNotes() {
-    _saveToStorage(gNotes)
+
+    let notes = _loadFromStorage()
+    if(!notes) _saveToStorage(gNotes)
+     
+
 }
 
 function getNotes() {
     let notes = _loadFromStorage()
-    return Promise.resolve(notes) 
+    return Promise.resolve(notes)
 }
 
 function query(filterBy) {
@@ -83,7 +87,7 @@ function _add(noteToAdd) {
     return Promise.resolve()
 }
 
-function updateNote(noteToUpdate){
+function updateNote(noteToUpdate) {
     _update(noteToUpdate)
 }
 
@@ -99,14 +103,14 @@ function getVendors() {
 }
 
 function _createnote(note) {
-   
 
-        console.log('item', note)
-        note.id = utilService.makeId()
-        gNotes.push(note)
-        return note
 
-    
+    console.log('item', note)
+    note.id = utilService.makeId()
+    gNotes.push(note)
+    return note
+
+
 }
 
 function _createnotes() {
