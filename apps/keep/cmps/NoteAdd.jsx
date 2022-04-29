@@ -14,13 +14,13 @@ export class NoteAdd extends React.Component {
     state = {
         note: {
 
-            type: 'note-todos',
+            type: 'note-txt',
             isPinned: false,
             info: {
                 txt: null,
                 url: null,
                 title: null,
-                style: null,
+                style: {opcaity: '0.5', backgroundColor: 'lightgrey'},
                 label: null,
                 todos: [{
                     txt: null, doneAt: null, isDone: false, id: null

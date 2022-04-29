@@ -88,6 +88,7 @@ function _add(noteToAdd) {
 }
 
 function updateNote(noteToUpdate) {
+    console.log('before update', noteToUpdate)
     _update(noteToUpdate)
 }
 

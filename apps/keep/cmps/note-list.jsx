@@ -62,8 +62,8 @@ export class NoteList extends React.Component {
 
                     return <div key={note.id} >
                         {note.type === 'note-txt' && <NoteTxt note={note} loadNotes={this.loadNotes} />}
-                        {note.type === 'note-img' && <NoteImg note={note} loadNotes={this.loadNotes}/>}
-                        {note.type === 'note-todos' && <NoteTodo note={note} loadNotes={this.loadNotes}/>}
+                        {note.type === 'note-img' && <NoteImg note={note} loadNotes={this.loadNotes} />}
+                        {note.type === 'note-todos' && <NoteTodo note={note} loadNotes={this.loadNotes} />}
                         
 
                     </div>

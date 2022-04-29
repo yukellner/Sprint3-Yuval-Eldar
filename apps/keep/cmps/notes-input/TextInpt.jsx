@@ -7,6 +7,8 @@ export function TextInpt({ handleChange }) {
 
         {console.log('im in text input')}
 
-        <textarea type="text" className="notes-filter" name="title" placeholder="add a note" onChange={handleChange} />
+        <input placeholder="title" name="title" className="title-inpt t-inpt" onChange={handleChange}></input>
+
+        <textarea type="text" className="notes-filter t-inpt" name="txt" placeholder="add note content" onChange={handleChange} />
     </section>
 }
