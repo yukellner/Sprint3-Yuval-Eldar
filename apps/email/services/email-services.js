@@ -157,7 +157,7 @@ function moveToTrash(id) {
 function sendMail(email) {
   const sentEmail =  {
     to: email.to,
-    from: 'you',
+    from: 'you@gmail.com',
     date: new Date(),
     id: makeId(),
     title: email.title,

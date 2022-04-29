@@ -54,12 +54,13 @@ export class EmailDetail extends React.Component {
 
         if (!this.state.email) return null
         return <section className="email-detail">
-            <div>
-                {this.state.email.labels && this.state.email.labels.map((label) => <div className={`label-${label}`}>{label}</div>)}
-            </div>
+           <section className="labels-section">
+                {this.state.email.labels.map((label) => <div className={`label-${label}`}>{label}</div>)}
+                </section>
+            
             <h3>from:  {this.state.email.from}</h3>
             <h3>Subject: {this.state.email.title}</h3>
-            <h3>Arrived at:{this.state.email.date} </h3>
+            <h3>Arrived at: {this.state.email.date.substring(0,10)} </h3>
             <br />
             <p>{this.state.email.txt}</p>
             <br />
