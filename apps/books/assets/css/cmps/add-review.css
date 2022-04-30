@@ -1,0 +1,19 @@
+
+.add-review {
+    display: flex;
+    flex-direction: column;
+
+    width: 450px;
+    gap: 15px;
+    margin-inline-end: 10px;
+}
+
+.book-review {
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+
+    width: 200px;
+    height: 150px;
+    margin: 20px;
+}

@@ -30,3 +30,18 @@
     color: rgba(96, 96, 96, 0.668);
     
 }
+
+.home-welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: rgb(5, 55, 74);
+}
+
+.app-header-link-home {
+    position: fixed;
+    top: 40px;
+    right: 30px;
+}
