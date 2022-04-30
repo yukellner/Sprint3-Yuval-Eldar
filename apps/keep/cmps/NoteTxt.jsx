@@ -34,12 +34,12 @@ export class NoteTxt extends React.Component {
     }
 
     viewCard = () => {
-        this.setState({viewIsOn : true})
+        this.setState({ viewIsOn: true })
 
     }
 
     closeViewCard = () => {
-        this.setState({viewIsOn : false})
+        this.setState({ viewIsOn: false })
 
 
     }
@@ -50,13 +50,30 @@ export class NoteTxt extends React.Component {
         const { note, loadNotes } = this.props
 
         return <section>
-            <div className="note-card"  style={note.info.style}>
+            <div className="note-card" style={note.info.style}>
 
 
                 <div className="main-note-card" onClick={this.viewCard}>
 
                     <h2>{note.info.title}</h2>
                     <h3>{note.info.txt}</h3>
+
+
+                    <div className="labels-on-card">
+
+
+
+                        {note.info.labels.map(label => <h6>{label}</h6>)}
+
+                    </div>
+
+
+
+
+
+
+
+
 
 
                 </div>
@@ -74,7 +91,7 @@ export class NoteTxt extends React.Component {
                 </div>
             </div>
 
-            {this.state.viewIsOn && <NoteEdit note={note} closeViewCard={this.closeViewCard} loadNotes={loadNotes}/>}
+            {this.state.viewIsOn && <NoteEdit note={note} closeViewCard={this.closeViewCard} loadNotes={loadNotes} />}
         </section>
     }
 }
