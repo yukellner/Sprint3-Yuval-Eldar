@@ -14,15 +14,15 @@ export class TodoLine extends React.Component {
 
 
     componentDidMount() {
-        if(this.props.todo.isDone) {
+        if (this.props.todo.isDone) {
 
-            this.setState({ footerStyle: {textDecorationLine: 'line-through'} , isDone: true})
+            this.setState({ footerStyle: { textDecorationLine: 'line-through' }, isDone: true })
 
         }
 
 
-        
-        
+
+
     }
 
     onCheckedBox = ({ target }) => {
@@ -38,24 +38,36 @@ export class TodoLine extends React.Component {
             // noteService.updateNote(this.props.note)
         }
         else {
-            
-            
+
+
             this.setState({ footerStyle: null, isDone: false })
-            
-            
+
+
         }
 
         setTimeout(() => {
             this.props.todo.isDone = target.checked
             noteService.updateNote(this.props.note)
-            
+
         }, '100');
+
+        
+
+
 
 
 
 
         target.value = 'off'
         console.log('va', target.value)
+    }
+
+    onDeleteTodo = () => {
+        noteService.removeTodo(this.props.note.id, this.props.todo.id)
+            .then(this.props.loadNotes)
+
+
+
     }
 
 
@@ -70,9 +82,11 @@ export class TodoLine extends React.Component {
 
 
 
-             <input id={this.props.todo.txt} onChange={this.onCheckedBox} type="checkbox" checked={this.state.isDone}/>
-              <label style={footerStyle} htmlFor={this.props.todo.txt} >{this.props.todo.txt}</label>
-            
+            <input id={this.props.todo.txt} onChange={this.onCheckedBox} type="checkbox" checked={this.state.isDone} />
+            <label style={footerStyle} htmlFor={this.props.todo.txt} >{this.props.todo.txt}</label>
+            <i className="fa-solid fa-xmark delete-note right" onClick={this.onDeleteTodo}></i>
+
+
 
 
         </section>

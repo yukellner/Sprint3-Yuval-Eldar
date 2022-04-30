@@ -10,12 +10,13 @@ export const noteService = {
     getNotes,
     saveNote,
     initialSaveNotes,
-    updateNote
+    updateNote,
+    removeTodo
 }
 
 const KEY = 'notesDB'
 var gNotes = [
-    { id: "n101", type: "note-txt", isPinned: true, info: { txt: "Fullstack Me Baby!" } },
+    { id: "n101", type: "note-txt", isPinned: true, info: { title:"hi" ,txt: "Fullstack Me Baby!" } },
     { id: "n102", type: "note-img", info: { url: "https://cdn.britannica.com/16/177616-050-0167E767/Casablanca-Morocco.jpg", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
     { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
 
@@ -40,13 +41,20 @@ function query(filterBy) {
     }
 
     if (filterBy) {
-        let { vendor, minSpeed, maxSpeed } = filterBy
-        if (!minSpeed) minSpeed = 0;
-        if (!maxSpeed) maxSpeed = Infinity
-        notes = notes.filter(note =>
-            note.vendor.includes(vendor) &&
-            note.speed <= maxSpeed &&
-            note.speed >= minSpeed)
+        let filter = filterBy
+
+        
+        
+        notes = notes.filter(note => 
+            (note.type.includes('note-txt') &&  (note.info.title.includes(filter) ||   note.info.txt.includes(filter))  ) ||
+
+            (note.type.includes('note-todos') && note.info.title.includes(filter))
+        )
+
+        
+
+
+
     }
 
     return Promise.resolve(notes)
@@ -68,6 +76,14 @@ function getById(noteId) {
 function remove(noteId) {
     let notes = _loadFromStorage()
     notes = notes.filter(note => note.id !== noteId)
+    _saveToStorage(notes)
+    return Promise.resolve()
+}
+
+function removeTodo(noteId, todoId) {
+    let notes = _loadFromStorage()
+    let note = notes.find(note => note.id === noteId)
+    note.info.todos = note.info.todos.filter(todo => todo.id !== todoId)
     _saveToStorage(notes)
     return Promise.resolve()
 }

@@ -9,31 +9,33 @@ export class NoteEdit extends React.Component {
         note: this.props.note
 
 
-        }
-    
-        
-
-        handleChange = ({target}) => {
-
-            const field = target.name
-            const value = target.value
-
-            this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
+    }
 
 
-        }
 
-        onUpdate = () => {
+    handleChange = ({ target }) => {
 
-           
-                noteService.updateNote(this.state.note)
-                .then(() => {
-                  })
-    
-            
-        }
+        const field = target.name
+        const value = target.value
 
-        
+        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
+
+
+    }
+
+    onUpdate = () => {
+
+
+        noteService.updateNote(this.state.note)
+            .then(() => {
+            })
+
+
+    }
+
+
+
+
 
 
     render() {
@@ -45,12 +47,20 @@ export class NoteEdit extends React.Component {
             <div className="shown-card" style={this.state.note.info.style}>
                 <form>
 
-                <input placeholder={note.info.title}   name="title" onChange={this.handleChange}></input>
-                <h2>{note.info.title}</h2>
-                <h3>{note.info.txt}</h3>
-                <button onClick={this.onUpdate}>update</button>
+                    <div className="flex">
+
+
+                        <h2>header</h2> <input placeholder={note.info.title} name="title" onChange={this.handleChange}></input>
+                    </div>
+                    <div className="flex">
+
+                        <h3>text</h3> <input placeholder={note.info.txt} name="txt" onChange={this.handleChange}></input>
+                    </div>
+
+                    <h3>{note.info.txt}</h3>
+                    <button onClick={this.onUpdate}>update</button>
                 </form>
-            <button onClick={closeViewCard}>X</button  >
+                <button onClick={closeViewCard}>X</button  >
             </div>
 
 

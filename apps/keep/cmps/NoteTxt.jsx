@@ -51,10 +51,10 @@ export class NoteTxt extends React.Component {
         const { note, loadNotes } = this.props
 
         return <section>
-            <div className="note-card" onClick={this.viewCard} style={note.info.style}>
+            <div className="note-card"  style={note.info.style}>
 
 
-                <div className="main-note-card">
+                <div className="main-note-card" onClick={this.viewCard}>
 
                     <h2>{note.info.title}</h2>
                     <h3>{note.info.txt}</h3>

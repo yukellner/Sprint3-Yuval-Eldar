@@ -17,13 +17,13 @@ export class NoteAdd extends React.Component {
             type: 'note-txt',
             isPinned: false,
             info: {
-                txt: null,
+                txt: '',
                 url: null,
-                title: null,
-                style: {opcaity: '0.5', backgroundColor: 'lightgrey'},
+                title: '',
+                style: {backgroundColor: 'lightgrey'},
                 label: null,
                 todos: [{
-                    txt: null, doneAt: null, isDone: false, id: null
+                    txt: '', doneAt: null, isDone: false, id: null
 
                 }]
             },
@@ -31,9 +31,9 @@ export class NoteAdd extends React.Component {
         }
     }
 
-    onSaveTodoNote = (todosss) => {
+    onSaveTodoNote = (title, todosss) => {
 
-        console.log('todos for save', todosss)
+        console.log('title for save', title)
 
         // let todoss = this.state.note.info.todos
 
@@ -43,12 +43,13 @@ export class NoteAdd extends React.Component {
         // todoss.push(todosss)
         // this.setState({note:todosss})
         this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, todos: todosss } } }))
+        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, title: title } } }))
 
         setTimeout(() => {
             noteService.saveNote(this.state.note)
                 .then(() => {
                     this.props.loadNotes()
-                    console.log('state', this.state)
+                    console.log('stateTodo', this.state)
                 })
 
         }, '500')
