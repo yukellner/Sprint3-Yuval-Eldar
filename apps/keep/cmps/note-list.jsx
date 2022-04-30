@@ -22,10 +22,7 @@ export class NoteList extends React.Component {
             this.loadNotes()
           }, "100")
 
-
-
-        
-        // this.props.updateNotes(this.state.notes)
+        this.props.updateNotes(this.state.notes)
         this.removeEvent = eventBusService.on('emailToNote', (note) => {
             noteService.saveNote(note)
         })

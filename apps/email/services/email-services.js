@@ -12,6 +12,8 @@ export const emailService = {
   testFunc,
   moveToTrash,
   toggleRead,
+  addEmail,
+  makeId,
 };
 
 const EMAIL_KEY = "mister_email";
@@ -27,7 +29,7 @@ const defaultEmails = [
     id: makeId(),
     title: "tel aviv ",
     folder: "inbox",
-    labels: [],
+    labels: ['memes'],
     isStar: Math.random() > 0.5 ? false : true,
     isRead: Math.random() > 0.5 ? false : true,
     txt: txt,
@@ -39,7 +41,7 @@ const defaultEmails = [
     id: makeId(),
     title: "sababa",
     folder: "inbox",
-    labels: [],
+    labels: ['work'],
     isStar: Math.random() > 0.5 ? false : true,
     isRead: Math.random() > 0.5 ? false : true,
     txt: txt,
@@ -51,7 +53,7 @@ const defaultEmails = [
     id: makeId(),
     title: "test email 3",
     folder: "inbox",
-    labels: [],
+    labels: ['fun'],
     isStar: Math.random() > 0.5 ? false : true,
     isRead: Math.random() > 0.5 ? false : true,
     txt: txt,
@@ -63,7 +65,67 @@ const defaultEmails = [
     id: makeId(),
     title: "test email 4",
     folder: "inbox",
-    labels: [],
+    labels: ['memes', 'critical'],
+    isStar: Math.random() > 0.5 ? false : true,
+    isRead: Math.random() > 0.5 ? false : true,
+    txt: txt,
+  },
+  {
+    to: null,
+    from: "muki@gmail.com",
+    date: new Date(),
+    id: makeId(),
+    title: "don't forget!",
+    folder: "inbox",
+    labels: ['work', 'critical'],
+    isStar: Math.random() > 0.5 ? false : true,
+    isRead: Math.random() > 0.5 ? false : true,
+    txt: txt,
+  },
+  {
+    to: null,
+    from: "shlomo@gmail.com",
+    date: new Date(),
+    id: makeId(),
+    title: "have you seen Puki? ",
+    folder: "draft",
+    labels: ['memes', 'critical'],
+    isStar: Math.random() > 0.5 ? false : true,
+    isRead: Math.random() > 0.5 ? false : true,
+    txt: txt,
+  },
+  {
+    to: null,
+    from: "shraga@gmail.com",
+    date: new Date(),
+    id: makeId(),
+    title: "yo yo  ",
+    folder: "draft",
+    labels: ['memes', 'fun'],
+    isStar: Math.random() > 0.5 ? false : true,
+    isRead: Math.random() > 0.5 ? false : true,
+    txt: txt,
+  },
+  {
+    to: null,
+    from: "shraga@gmail.com",
+    date: new Date(),
+    id: makeId(),
+    title: "nice one! ",
+    folder: "trash",
+    labels: ['memes', 'fun'],
+    isStar: Math.random() > 0.5 ? false : true,
+    isRead: Math.random() > 0.5 ? false : true,
+    txt: txt,
+  },
+  {
+    to: null,
+    from: "shraga@gmail.com",
+    date: new Date(),
+    id: makeId(),
+    title: "can you please... ",
+    folder: "sent",
+    labels: ['bills', 'fun'],
     isStar: Math.random() > 0.5 ? false : true,
     isRead: Math.random() > 0.5 ? false : true,
     txt: txt,
@@ -194,4 +256,10 @@ function draftMail(email) {
 
 function testFunc() {
   console.log('test function');
+}
+
+function addEmail(email) {
+  const emails = getEmails()
+  emails.push(email)
+  storageService.saveToStorage(EMAIL_KEY,emails)
 }

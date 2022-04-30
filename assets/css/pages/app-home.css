@@ -32,5 +32,19 @@
 }
 
 .add-btn{
-    font-size: 20px;
+    font-size: 20px;}
+
+.home-welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: rgb(5, 55, 74);
+}
+
+.app-header-link-home {
+    position: fixed;
+    top: 40px;
+    right: 30px;
 }

@@ -1,0 +1,9 @@
+.book-list {
+    background-color: rgb(232, 188, 117);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+
+}

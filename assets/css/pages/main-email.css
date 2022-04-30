@@ -219,6 +219,17 @@ body {
     border-radius: 3px;
 }
 
+.sent-to-emails-modal {
+    position: fixed;
+    right: 20px;
+    bottom:300px;
+    background-color: rgb(224, 193, 67);
+    width: 102px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
 
 
 

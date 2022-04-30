@@ -4,7 +4,7 @@ import { EmailSideBar } from "../cmp/email-side-bar.jsx"
 import { EmailFilter } from "../cmp/email-filter-header.jsx"
 import { EmailDetail } from "../cmp/email-detail.jsx"
 import { ComposeEmail } from "../cmp/email-compose.jsx"
-
+import {eventBusService} from "../../../services/event-bus-service.js"
 
 
 const Router = ReactRouterDOM.HashRouter
@@ -26,14 +26,21 @@ export class Emails extends React.Component {
 
     }
 
+    removeEvent
+
 
 
     componentDidMount() {
 
         const emails = emailService.getEmails()
         this.setState({ emails })
+        this.removeEvent = eventBusService.on('noteToEmail', (mail) => {
+           emailService.addEmail(mail)
+        })
+        eventBusService.on('noteToEmail', (mail) => {
+            emailService.addEmail(mail)
+         })
         
-
     }
 
   
@@ -109,6 +116,10 @@ export class Emails extends React.Component {
     unreadCount = () => {
         const unreadEmails = this.state.emails.filter((email) => !email.isRead)
         return unreadEmails.length
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        this.removeEvent()
     }
 
 

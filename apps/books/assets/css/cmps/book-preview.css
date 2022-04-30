@@ -1,0 +1,17 @@
+.book-preview {
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.457);
+    text-decoration: none;
+    color: rgb(41, 41, 41);
+}
+
+.book-preview .thumb-container {
+    max-width: 250px;
+}
+
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}

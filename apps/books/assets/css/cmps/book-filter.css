@@ -1,0 +1,12 @@
+.book-filter {
+    margin:20px;
+    width: 100%; 
+    display: flex;
+    justify-content: space-around;  
+    margin: 10px;
+    gap: 5%;
+}
+
+.button-filter{
+    margin-left: 10px;
+}

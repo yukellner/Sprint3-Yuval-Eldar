@@ -1,4 +1,6 @@
 import { noteService } from '../../services/note.service.js'
+import {eventBusService} from "../../../services/event-bus-service.js"
+import { emailService } from '../../../email/services/email-services.js'
 
 const { Link } = ReactRouterDOM
 
@@ -6,11 +8,13 @@ const { Link } = ReactRouterDOM
 export class NoteEdit extends React.Component {
 
     state = {
-        note: this.props.note
+        note: this.props.note,
+        sentToEmails:false
 
 
     }
-
+     
+    timeoutID
 
 
     handleChange = ({ target }) => {
@@ -34,8 +38,35 @@ export class NoteEdit extends React.Component {
     }
 
 
+    transformToEmail = () => {
+        console.log('sending email from note');
 
+        const newEmail = {
+            to: 'you@gmail.com',
+            from: 'notes@missNotes.com',
+            date: new Date(),
+            id: emailService.makeId(), 
+            title: this.props.note.info.title,
+            folder: 'inbox',
+            labels: [],
+            isStar: false,
+            isRead: false,
+            txt: this.props.note.info.txt   
+        }
+        eventBusService.emit('noteToEmail', newEmail)
+        this.sentModal()
 
+    }
+
+    sentModal = () => {
+        if (this.timeoutId) clearTimeout(this.timeoutId)
+        this.setState({sentToEmails: true}, () => {
+            this.timeoutID = setTimeout( () => {
+            
+            this.setState({sentToEmails:false})
+            clearTimeout(this.timeoutID)}, 2000)
+        })
+    }
 
 
     render() {
@@ -61,8 +92,9 @@ export class NoteEdit extends React.Component {
                     <button onClick={this.onUpdate}>update</button>
                 </form>
                 <button onClick={closeViewCard}>X</button  >
+                <button onClick={this.transformToEmail}>Send as Email ✉</button  >
             </div>
-
+            {this.state.sentToEmails && <div className="sent-to-emails-modal"> Sent as Email</div>}
 
 
 

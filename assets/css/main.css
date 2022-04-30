@@ -4,4 +4,5 @@
 @import './baisics/helpers.css';
 @import './pages/app-home.css';
 @import './res.css';
+@import '../../apps/books/assets/css/main.css';
 
