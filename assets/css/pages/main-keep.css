@@ -16,6 +16,23 @@
 
 }
 
+.labels-on-card{
+    display: flex;
+    gap: 3px;
+    width: 90%;
+    flex-wrap: wrap;
+    height: 10px;
+}
+
+.btn-label{
+
+}
+
+.labels-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .note-card:hover{
     box-shadow:0 0 6px 0 rgb(54, 52, 52)
 

@@ -5,6 +5,7 @@ import { ImgInpt } from '../cmps/notes-input/ImgInpt.jsx'
 import { TodosInpt } from '../cmps/notes-input/TodosInpt.jsx'
 import { TextInpt } from '../cmps/notes-input/TextInpt.jsx'
 import { ColorPicker } from '../cmps/viewCard/ColorPicker.jsx'
+import { LabelPicker } from './viewCard/LabelPicker.jsx'
 
 
 const { Link } = ReactRouterDOM
@@ -21,7 +22,7 @@ export class NoteAdd extends React.Component {
                 url: null,
                 title: '',
                 style: {backgroundColor: 'rgb(251, 231, 198)'},
-                label: null,
+                labels: [],
                 todos: [{
                     txt: '', doneAt: null, isDone: false, id: null
 
@@ -30,6 +31,19 @@ export class NoteAdd extends React.Component {
 
         },
         btnstyle:{visibility:'visible'}
+    }
+
+    updateLable = (label) => {
+        alert(label)
+        let curLabels = this.state.note.info.labels
+        curLabels.push(label)
+        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, labels: curLabels } } }))
+
+        console.log('state',this.state.note.info.labels)
+
+        
+
+
     }
 
     onSaveTodoNote = (title, todosss) => {
@@ -127,6 +141,7 @@ export class NoteAdd extends React.Component {
             <div className="add-note-container" >
                 <div className="notes-form" style={this.state.note.info.style}>
 
+            {/* <LabelPicker updateLable={this.updateLable} note={this.state.note}/> */}
 
                 <form action=""   onSubmit={this.onSaveNote}>
 
@@ -137,7 +152,7 @@ export class NoteAdd extends React.Component {
 
 
 
-                    {this.state.note.type && <DynamicCmp type={this.state.note.type}  handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote} />}
+                    {this.state.note.type && <DynamicCmp type={this.state.note.type} updateLable={this.updateLable}  handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote} />}
 
 
 
@@ -175,7 +190,7 @@ function DynamicCmp({ type, handleChange, onSaveTodoNote }) {
     switch (type) {
 
         case 'note-txt':
-            return <TextInpt handleChange={handleChange} />
+            return <TextInpt handleChange={handleChange}/>
         case 'note-todos':
             return <TodosInpt handleChange={handleChange} onSaveTodoNote={onSaveTodoNote} />
         case 'note-img':
