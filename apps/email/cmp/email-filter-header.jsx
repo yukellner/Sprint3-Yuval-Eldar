@@ -7,7 +7,7 @@ export class EmailFilter extends React.Component {
 
         return <section className="filter-header-section">
             <form action="" className="email-filter-form">
-                <div className="miss-email-filter-header">≡  MissEmail   📬</div>
+                <div className="miss-email-filter-header">≡  MisterEmail   📬</div>
               
                 <div>
                     <label htmlFor="">Search:</label>
