@@ -131,7 +131,7 @@ export class Emails extends React.Component {
             <div className="email-core">
                 <Link to="/emails" className="side-bar-link"><EmailSideBar
                     starFolder={this.starFolder} navigateFolder={this.navigateFolder} /></Link>
-                <section >
+                <section className="email-list-container" >
                     <Switch >
                         <Route path="/emails/compose" exact >  <ComposeEmail sendMail={emailService.sendMail} /> </Route>
                         <Route path='/emails/:id' render={(props) => <EmailDetail {...props} />} />
