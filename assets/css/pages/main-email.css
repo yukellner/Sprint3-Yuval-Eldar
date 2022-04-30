@@ -1,15 +1,15 @@
 body {
     font-family: Arial;
-}
+  }
 
 
 .email-main {
     margin-top: 30px;
-    display: flex;
+    display:flex;
     flex-direction: column;
     gap: 10px;
 
-
+    
 }
 
 .email-core {
@@ -17,36 +17,36 @@ body {
     display: flex;
     flex-direction: row;
 
-
+    
 }
 
 .email-priview {
-    display: flex;
+    display: flex; 
     gap: 3%;
     padding-left: 10px;
     flex-grow: 1;
     min-width: 380px;
     width: 100%;
-
+   
     border-radius: 5px;
 }
 
 .email-list {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: 100vw;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100vw;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); 
+  border-radius: 5px;
 
 
 }
 
 .email-filter {
-
+    
     display: flex;
     align-items: center;
-
+    
 }
 
 .email-filter-form {
@@ -57,7 +57,7 @@ body {
 }
 
 .email-priview:hover {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); 
     cursor: pointer;
 }
 
@@ -77,9 +77,9 @@ body {
 .email-menue-option {
     height: 25px;
     font-size: 18px;
-    margin-left: 10px;
+    margin-left: 10px; 
     display: flex;
-    align-items: center;
+    align-items: center; 
 }
 
 .email-menue-option:focus {
@@ -89,7 +89,7 @@ body {
 .email-menue-compose {
     height: 25px;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 10px; 
     display: flex;
     align-items: center;
 }
@@ -97,7 +97,6 @@ body {
 .email-not-star {
     opacity: 25%;
 }
-
 .email-not-read {
     font-weight: 950;
 }
@@ -113,7 +112,7 @@ body {
 }
 
 .unread-button {
-    position: fixed;
+    position:fixed;
     right: 20px;
     margin-top: 15px;
 
@@ -121,25 +120,24 @@ body {
     height: 30px;
 
 }
-
 .delete-button {
-    position: fixed;
+    position:fixed;
     right: 20px;
     margin-top: 15px;
 
-
+   
     height: 30px;
 
 }
 
 .email-menue-option {
     margin-right: 7px;
-    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3);
+    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
     border-radius: 20px;
     padding: 8px;
     padding-left: 12px;
     display: flex;
-
+    
 }
 
 .labels-section {
@@ -153,7 +151,7 @@ body {
     background-color: rgb(0, 89, 255);
     color: azure;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     border-radius: 20px;
 }
@@ -164,7 +162,7 @@ body {
     background-color: rgb(21, 242, 131);
     color: azure;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     border-radius: 20px;
 }
@@ -175,7 +173,7 @@ body {
     background-color: rgb(243, 39, 46);
     color: azure;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     border-radius: 20px;
 }
@@ -186,7 +184,7 @@ body {
     background-color: rgb(198, 192, 17);
     color: azure;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     border-radius: 20px;
 }
@@ -197,21 +195,21 @@ body {
     background-color: rgb(24, 24, 20);
     color: azure;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     border-radius: 20px;
 }
 
 .label-active {
-    box-shadow: 0 3px 0 1px rgb(222, 21, 216);
-    color: rgb(208, 228, 143);
+    box-shadow: 0 3px  0 1px rgb(222, 21, 216);
+    color: rgb(208, 228, 143); 
 }
 
 .sent-modal {
 
     position: fixed;
     right: 20px;
-    bottom: 380px;
+    bottom:380px;
     background-color: rgb(224, 193, 67);
     width: 96px;
     height: 20px;
@@ -230,41 +228,43 @@ body {
     border-radius: 3px;
 }
 
-
-
-
-
-@keyframes email-menue-option {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.1);
-    }
+.home-app {
+    
 }
 
 
-@keyframes email-menue-compose {
+
+
+
+ @keyframes email-menue-option {
     0% {
-        transform: scale(1);
+      transform: scale(1);
     }
-
     100% {
-        transform: scale(1.3);
+      transform: scale(1.1);
     }
-}
+  }
 
+  
+ @keyframes email-menue-compose {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.3);
+    }
+  }
+  
 
 .email-menue-option:hover {
-    box-shadow: 0 0 10px 0 rgba(86, 41, 81, 0.35);
+    box-shadow: 0 0 10px 0 rgba(86, 41, 81, 0.35); 
     background-color: rgba(224, 235, 101, 0.109);
     animation: email-menue-option 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .email-menue-compose {
     margin-right: 7px;
-    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3);
+    box-shadow: 0 0 10px 0 rgba(181, 65, 170, 0.3); 
     border-radius: 20px;
     padding: 10px;
     padding-left: 12px;
@@ -272,7 +272,7 @@ body {
 }
 
 .email-menue-compose:hover {
-    box-shadow: 0 0 18px 0 rgba(146, 8, 8, 0.459);
+    box-shadow: 0 0 18px 0 rgba(146, 8, 8, 0.459); 
     background-color: rgba(227, 246, 17, 0.201);
     animation: email-menue-option 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
@@ -317,7 +317,7 @@ body {
     justify-content: center;
     font-weight: 600;
     margin-left: 5px;
-
+    
 }
 
 .email-detail {
@@ -325,8 +325,8 @@ body {
 }
 
 .unread-div {
-    font-weight: 700;
-    margin-top: 4px;
+   font-weight: 700;
+   margin-top: 4px;
 }
 
 .detail-buttons {
@@ -354,6 +354,8 @@ body {
         gap: 20px;
     }
 
-
+   
 
 }
+
+
