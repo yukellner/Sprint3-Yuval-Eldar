@@ -11,6 +11,6 @@ export function TextInpt({ handleChange }) {
 
         <input placeholder="title" name="title" className="title-inpt t-inpt" onChange={handleChange}></input>
 
-        <textarea type="text" className="notes-filter t-inpt" name="txt" placeholder="add note content" onChange={handleChange} />
+        <textarea type="text" className=" t-inpt" name="txt" placeholder="add note content" onChange={handleChange} />
     </section>
 }

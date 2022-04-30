@@ -13,7 +13,7 @@ export class NoteTodo extends React.Component {
     state = {
         styling: null,
         todo: null
-        
+
 
 
     }
@@ -42,11 +42,11 @@ export class NoteTodo extends React.Component {
     onAddTodo = () => {
 
 
-        
+
         this.props.note.info.todos.push(this.state.todo)
         noteService.updateNote(this.props.note)
 
-        
+
         this.props.loadNotes()
 
 
@@ -57,15 +57,15 @@ export class NoteTodo extends React.Component {
 
     handelChange = ({ target }) => {
 
-        let todoToAdd = 
-            {
-                txt: target.value,
-                donAt: null,
-                isDone: false,
-                id: utilService.makeId()
-            }
-        
-       
+        let todoToAdd =
+        {
+            txt: target.value,
+            donAt: null,
+            isDone: false,
+            id: utilService.makeId()
+        }
+
+
 
         this.setState({ todo: todoToAdd })
 
@@ -98,9 +98,18 @@ export class NoteTodo extends React.Component {
 
                     })}
                     <form>
-                        <input type="text" className="new-todo-line" onChange={this.handelChange} />
 
-                        <i className="fa-solid fa-plus" onClick={this.onAddTodo}></i>
+                        <div className="new-todo2">
+                            <div>
+
+
+                                <input type="text" className="new-todo-line" onChange={this.handelChange} />
+                            </div>
+                            <div>
+
+                                <i className="fa-solid fa-plus" onClick={this.onAddTodo}></i>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
