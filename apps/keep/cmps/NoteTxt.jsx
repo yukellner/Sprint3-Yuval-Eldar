@@ -59,13 +59,13 @@ export class NoteTxt extends React.Component {
                     <h3>{note.info.txt}</h3>
 
 
-                    <div className="labels-on-card">
+                    {/* <div className="labels-on-card">
 
 
 
                         {note.info.labels.map(label => <h6>{label}</h6>)}
 
-                    </div>
+                    </div> */}
 
 
 
