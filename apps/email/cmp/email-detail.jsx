@@ -66,7 +66,7 @@ export class EmailDetail extends React.Component {
             <br />
             <div className="detail-buttons">
                 <Link to="/emails" >
-                    <button onClick={() => emailService.moveToTrash(this.state.email.id)}>🗑</button>
+                    <button onClick={() => emailService.moveToTrash(this.state.email.id)}>Move to Trash 🗑</button>
                 </Link>
                 <button onClick={() => this.markAsUnread(this.state.email.id)}>Mark as Unread</button>
                 <button onClick={() => this.transformToNote(this.state.email)}>Transform to Note</button>
