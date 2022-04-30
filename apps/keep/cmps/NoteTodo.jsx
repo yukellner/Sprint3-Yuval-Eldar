@@ -11,8 +11,13 @@ export class NoteTodo extends React.Component {
 
 
     state = {
-        styling: null
+        styling: null,
+        todo: null
+        
+
+
     }
+
 
 
     onDeleteNote = () => {
@@ -34,6 +39,38 @@ export class NoteTodo extends React.Component {
 
     }
 
+    onAddTodo = () => {
+
+
+        
+        this.props.note.info.todos.push(this.state.todo)
+        noteService.updateNote(this.props.note)
+
+        
+        this.props.loadNotes()
+
+
+
+
+
+    }
+
+    handelChange = ({ target }) => {
+
+        let todoToAdd = 
+            {
+                txt: target.value,
+                donAt: null,
+                isDone: false,
+                id: utilService.makeId()
+            }
+        
+       
+
+        this.setState({ todo: todoToAdd })
+
+    }
+
 
 
     //  }) {
@@ -44,6 +81,7 @@ export class NoteTodo extends React.Component {
         return <section>
             <div className="note-card" style={this.props.note.info.style}>
                 <div className="main-note-card">
+                    <h2>{note.info.title}</h2>
 
 
                     {note.info.todos.map(todo => {
@@ -51,7 +89,7 @@ export class NoteTodo extends React.Component {
                         return <div key={utilService.makeId()}>
 
 
-                            <TodoLine todo={todo} note={note} />
+                            <TodoLine todo={todo} note={note} loadNotes={loadNotes} />
 
 
 
@@ -59,7 +97,12 @@ export class NoteTodo extends React.Component {
 
 
                     })}
+                    <form>
+                        <input type="text" onChange={this.handelChange} />
 
+                        <i className="fa-solid fa-plus" onClick={this.onAddTodo}></i>
+
+                    </form>
                 </div>
 
 
@@ -67,11 +110,11 @@ export class NoteTodo extends React.Component {
                 <div className="footer-note-card">
 
                     <i className="fa-solid fa-xmark delete-note" onClick={this.onDeleteNote}></i>
-                    
+
 
                     <div>
-                        <ColorPicker className="choose-color"  note={note} updateBc={this.updateBc}/>
-                    {/* <i className="fa-solid fa-palette" /> */}
+                        <ColorPicker className="choose-color" note={note} updateBc={this.updateBc} />
+                        {/* <i className="fa-solid fa-palette" /> */}
                         {/* <input type="color"  onChange={this.updateBc} /> */}
                     </div>
 

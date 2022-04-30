@@ -54,6 +54,11 @@
 
 }
 
+.right{
+    margin-left: 0;
+    right: 0;
+}
+
 .shown-card {
     position: fixed;
     display: block;
@@ -64,6 +69,9 @@
     min-height: 20%;
     border-radius: 9px;
     z-index: 10;
+    border: 1px black solid;
+    border-style: inset;
+    padding: 20px
 }
 
 

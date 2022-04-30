@@ -10,7 +10,8 @@ import {eventBusService} from "../../../services/event-bus-service.js"
 export class NoteList extends React.Component {
 
     state = {
-        notes: null
+        notes: null,
+        filterBy: null
     }
 
     componentDidMount() {
@@ -31,11 +32,18 @@ export class NoteList extends React.Component {
 
     loadNotes = () => {
         console.log('lodded')
-        noteService.getNotes()
+        noteService.query(this.state.filterBy)
             .then(notes => {
                 if (!notes) return this.props.history.push('/')
                 this.setState({ notes })
             })
+    }
+
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy }, this.loadNotes)
+
+        
+
     }
 
     
@@ -49,7 +57,7 @@ export class NoteList extends React.Component {
         if (!notes) return <h1>loading...</h1>
         return <section>
 
-            <NoteFilter />
+            <NoteFilter onSetFilter={this.onSetFilter}/>
             <NoteAdd loadNotes={this.loadNotes}/>
 
 

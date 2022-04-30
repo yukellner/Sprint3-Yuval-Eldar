@@ -6,7 +6,8 @@ import { ColorPicker } from '../../cmps/viewCard/ColorPicker.jsx'
 export class TodosInpt extends React.Component {
 
     state = {
-        todos: []
+        todos: [],
+        title: ''
     }
 
     gTodo2
@@ -21,11 +22,21 @@ export class TodosInpt extends React.Component {
 
     saveTo = () => {
 
-        this.props.onSaveTodoNote(this.state.todos)
+        this.props.onSaveTodoNote(this.state.title, this.state.todos)
 
         this.setState({todos: []})
 
     }
+
+    handleChange = ({target}) => {
+
+        this.setState({title: target.value})
+
+    }
+
+
+
+
 
     render() {
 
@@ -33,7 +44,9 @@ export class TodosInpt extends React.Component {
             {this.state.todos.map(todo => {
                 return <h3 key={utilService.makeId()}>{todo.txt}</h3>
             })}
+            <input placeholder="title" name="title" className="title-inpt t-inpt" onChange={this.handleChange}></input>
             <NewTodo onAddTodo={this.onAddTodo}/>
+
 
             <button onClick={this.saveTo}>create card</button>
         </section>
