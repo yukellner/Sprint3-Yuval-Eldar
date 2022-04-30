@@ -26,16 +26,17 @@ export class Emails extends React.Component {
 
     }
 
+
+
     componentDidMount() {
 
         const emails = emailService.getEmails()
         this.setState({ emails })
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
         
+
     }
+
+  
 
 
 

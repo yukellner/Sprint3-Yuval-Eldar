@@ -13,6 +13,7 @@ export class NoteList extends React.Component {
         notes: null,
         filterBy: null
     }
+    removeEvent;
 
     componentDidMount() {
 
@@ -25,6 +26,13 @@ export class NoteList extends React.Component {
 
         
         // this.props.updateNotes(this.state.notes)
+        this.removeEvent = eventBusService.on('emailToNote', (note) => {
+            noteService.saveNote(note)
+        })
+        eventBusService.on('emailToNote', (note) => {
+            noteService.saveNote(note)
+        })
+        
     }
 
     // onDeleteNoteb = (id) => {
@@ -56,7 +64,10 @@ export class NoteList extends React.Component {
     }
 
     
-
+  
+  componentDidUpdate(prevProps, prevState) {
+    this.removeEvent()
+  }
 
 
     render() {
