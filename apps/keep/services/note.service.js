@@ -16,17 +16,75 @@ export const noteService = {
 
 const KEY = 'notesDB'
 var gNotes = [
-    { id: "n101", type: "note-txt", isPinned: true, info: { title:"hi" ,txt: "Fullstack Me Baby!" } },
+    { id: "n101", type: "note-txt", isPinned: false, info: { style: { backgroundColor: '#FFAEBC' }, title: "to buy home", txt: "the last supermatket was great!!!" } },
+    // { id: "n102", type: "note-todos", info: { style: {backgroundColor: 'rgb(251, 231, 198)'} ,title: "missions for today", label: null, todos: [{ txt: 'go to run', doneAt: null, isDone: false, id: 123 }, { txt: "Coding power", doneAt: 187111111, isDone: true, id: 124 },{ txt: "meet a friend", doneAt: 187111111, isDone: true, id: 126 } ] } },
+    {
+        id: "n103",
+        type: "note-todos",
+        info: {
+            style: { backgroundColor: '#B4F8C8' },
+            title: "Get my stuff together",
+            label: null,
+            todos: [{
+                txt: "Get  stuff",
+                doneAt: null,
+                isDone: false,
+                id: 125
+            }]
+        },
+    },
+    {
+        id: "n110",
+        type: "note-todos",
+        info: {
+            style: { backgroundColor: '#B4F8C8' },
+            title: "missions",
+            label: null,
+            todos: [{
+                txt: "water",
+                doneAt: null,
+                isDone: false,
+                id: 126
+            },{
+                txt: "appels",
+                doneAt: null,
+                isDone: true,
+                id: 134
+            },{
+                txt: "go home",
+                doneAt: null,
+                isDone: false,
+                id: 1456
+            }]
+        },
+    },
+    { id: "n104", type: "note-txt", isPinned: false, info: { style: { backgroundColor: 'rgb(251, 231, 198)' }, title: "hi", txt: "Fullstack Me Baby!" } },
+    {
+        id: "n133",
+        type: "note-todos",
+        info: {
+            style: { backgroundColor: '#B4F8C8' },
+            title: "Get my stuff together",
+            label: null,
+            todos: [{
+                txt: "Get it",
+                doneAt: null,
+                isDone: false,
+                id: 127
+            }]
+        },
+    },
+    // { id: "n105", type: "note-todos", isPinned: false, info: { style: {backgroundColor: '#B4F8C8'}, title:"hi" ,txt: "Fullstack Me Baby!" } },
+    { id: "n106", type: "note-txt", isPinned: false, info: { style: { backgroundColor: '#A0E7E5' }, title: "hi", txt: "Fullstack Me Baby!" } },
     // { id: "n102", type: "note-img", info: { url: "https://cdn.britannica.com/16/177616-050-0167E767/Casablanca-Morocco.jpg", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
-    // { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
 ]
 function initialSaveNotes() {
 
     let notes = _loadFromStorage()
-    if(!notes) _saveToStorage(gNotes)
+    if (!notes) _saveToStorage(gNotes)
 
     return Promise.resolve(notes)
-     
+
 
 }
 
@@ -46,15 +104,15 @@ function query(filterBy) {
     if (filterBy) {
         let filter = filterBy
 
-        
-        
-        notes = notes.filter(note => 
-            (note.type.includes('note-txt') &&  (note.info.title.includes(filter) ||   note.info.txt.includes(filter))  ) ||
+
+
+        notes = notes.filter(note =>
+            (note.type.includes('note-txt') && (note.info.title.includes(filter) || note.info.txt.includes(filter))) ||
 
             (note.type.includes('note-todos') && note.info.title.includes(filter))
         )
 
-        
+
 
 
 
