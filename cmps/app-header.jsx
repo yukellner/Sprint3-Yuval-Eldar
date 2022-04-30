@@ -22,7 +22,7 @@ class _AppHeader extends React.Component {
 
             {/* {carsCount && <h3>Cars count: {carsCount}</h3>} */}
             <nav className="app-header-nav">
-                <NavLink className="app-header-link" to="/emails">Emails</NavLink>
+                <NavLink className="app-header-link" to="/emails" activeClassName="my-active">Emails</NavLink>
                 <NavLink className="app-header-link" to="/keep" activeClassName="my-active">Keep</NavLink>
                 <NavLink className="app-header-link" to="/books" activeClassName="my-active">Books</NavLink>
             </nav>
