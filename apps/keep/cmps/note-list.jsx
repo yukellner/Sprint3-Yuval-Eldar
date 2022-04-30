@@ -13,10 +13,17 @@ export class NoteList extends React.Component {
         notes: null,
         filterBy: null
     }
+    removeEvent;
 
     componentDidMount() {
         this.loadNotes()
-        // eventBusService.on('emailToNote')
+        this.removeEvent = eventBusService.on('emailToNote', (note) => {
+            noteService.saveNote(note)
+        })
+        eventBusService.on('emailToNote', (note) => {
+            noteService.saveNote(note)
+        })
+        
     }
 
     // onDeleteNoteb = (id) => {
@@ -47,7 +54,10 @@ export class NoteList extends React.Component {
     }
 
     
-
+  
+  componentDidUpdate(prevProps, prevState) {
+    this.removeEvent()
+  }
 
 
     render() {

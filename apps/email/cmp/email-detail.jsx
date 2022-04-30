@@ -6,13 +6,19 @@ export class EmailDetail extends React.Component {
 
     state = {
         email: null,
-        title: 'str'
+        title: 'str',
+        sentToNote: false
+
 
     }
 
+    timeoutID
+    
+
     componentDidMount() {
         this.loadEmail()
-        console.log(this.state.email);
+
+     
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -31,7 +37,7 @@ export class EmailDetail extends React.Component {
 
     loadEmail = () => {
         const { id } = this.props.match.params
-        console.log({ id });
+    
         emailService.getById(id)
             .then(email => {
                 if (!email) return this.props.history.push('/')
@@ -46,7 +52,18 @@ export class EmailDetail extends React.Component {
             isPinned: false,
             info: { txt: this.state.email.txt }
         }
-        eventBusService.emit('emailToNote',newNote)
+        eventBusService.emit('emailToNote', newNote)
+        this.sentModal()
+    }
+
+    sentModal = () => {
+        if (this.timeoutId) clearTimeout(this.timeoutId)
+        this.setState({sentToNote: true}, () => {
+            this.timeoutID = setTimeout( () => {
+            
+            this.setState({sentToNote:false})
+            clearTimeout(this.timeoutID)}, 2000)
+        })
     }
 
     render() {
@@ -55,7 +72,7 @@ export class EmailDetail extends React.Component {
         if (!this.state.email) return null
         return <section className="email-detail">
            <section className="labels-section">
-                {this.state.email.labels.map((label) => <div className={`label-${label}`}>{label}</div>)}
+                {this.state.email.labels.map((label, idx) => <div key={idx} className={`label-${label}`}>{label}</div>)}
                 </section>
             
             <h3>from:  {this.state.email.from}</h3>
@@ -71,6 +88,7 @@ export class EmailDetail extends React.Component {
                 <button onClick={() => this.markAsUnread(this.state.email.id)}>Mark as Unread</button>
                 <button onClick={() => this.transformToNote(this.state.email)}>Transform to Note</button>
             </div>
+            {this.state.sentToNote && <div className="sent-modal"> Sent to notes</div>}
 
         </section>
 

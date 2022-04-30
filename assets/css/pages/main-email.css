@@ -205,6 +205,18 @@ body {
     color: rgb(208, 228, 143); 
 }
 
+.sent-modal {
+
+    position: fixed;
+    right: 20px;
+    bottom:380px;
+    background-color: rgb(224, 193, 67);
+    width: 96px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
 
 
 
