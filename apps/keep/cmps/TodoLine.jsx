@@ -59,7 +59,6 @@ export class TodoLine extends React.Component {
 
 
         target.value = 'off'
-        console.log('va', target.value)
     }
 
     onDeleteTodo = () => {
@@ -73,7 +72,6 @@ export class TodoLine extends React.Component {
 
     render() {
         const { footerStyle } = this.state
-        console.log('note', this.props.note)
 
         return <section>
 

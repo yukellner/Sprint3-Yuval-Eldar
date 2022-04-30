@@ -31,7 +31,6 @@ export class NoteTodo extends React.Component {
     updateBc = (bcColor) => {
 
 
-        // console.log('color', ev.target.value)
 
         this.setState({ styling: { backgroundColor: bcColor } })
         this.props.note.info.style = { backgroundColor: bcColor }

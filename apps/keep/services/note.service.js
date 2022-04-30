@@ -92,7 +92,6 @@ function removeTodo(noteId, todoId) {
 }
 
 function saveNote(note) {
-    console.log('note', note)
     // if (note.id) return _update(note)
     // else 
     return _add(note)
@@ -107,7 +106,6 @@ function _add(noteToAdd) {
 }
 
 function updateNote(noteToUpdate) {
-    console.log('before update', noteToUpdate)
     _update(noteToUpdate)
 }
 
@@ -125,7 +123,6 @@ function getVendors() {
 function _createnote(note) {
 
 
-    console.log('item', note)
     note.id = utilService.makeId()
     gNotes.push(note)
     return note
@@ -143,7 +140,6 @@ function _createnotes() {
 }
 
 function _saveToStorage(notes) {
-    console.log('before save to storage', notes)
     storageService.saveToStorage(KEY, notes)
 }
 

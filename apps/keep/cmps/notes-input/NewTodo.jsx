@@ -36,7 +36,7 @@ export class NewTodo extends React.Component {
            
 
 
-                <input type="text" className="notes-filter" name="todo" placeholder="add a note" onChange={this.handleChange1} />
+                <input type="text" className="add-todos-inpt" name="todo" placeholder="add todo" onChange={this.handleChange1} />
                 <button onClick={this.sendTodo}>+</button>
             
         </section>

@@ -14,7 +14,6 @@ export class ColorPicker extends React.Component {
     handlecolorChange = (color) => {
 
         const {note, updateBc} = this.props
-        console.log('color',color)
 
         updateBc(color)
 

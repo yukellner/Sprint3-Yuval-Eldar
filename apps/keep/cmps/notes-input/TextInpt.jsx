@@ -7,7 +7,6 @@ export function TextInpt({ handleChange }) {
 
 
 
-        {console.log('im in text input')}
 
         <input placeholder="title" name="title" className="title-inpt t-inpt" onChange={handleChange}></input>
 

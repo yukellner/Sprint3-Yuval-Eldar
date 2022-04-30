@@ -18,7 +18,6 @@ export class NoteList extends React.Component {
     componentDidMount() {
 
         setTimeout(() => {
-            console.log("Delayed for 0.1 second.");
             this.loadNotes()
           }, "100")
 
@@ -32,25 +31,18 @@ export class NoteList extends React.Component {
         
     }
 
-    // onDeleteNoteb = (id) => {
-    //     console.log('to delete id',id)
-    //     noteService.remove(id)
-    //     this.loadNotes()
-
-
-    // }
+    
 
 
 
 
     loadNotes = () => {
-        console.log('lodded')
         noteService.query(this.state.filterBy)
             .then(notes => {
                 if (!notes) return this.props.history.push('/')
                 this.setState({ notes })
             })
-            .catch(console.log('no db'))
+           
     }
 
     onSetFilter = (filterBy) => {

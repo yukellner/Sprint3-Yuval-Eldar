@@ -33,7 +33,6 @@ import { axios } from '../../services/axios.js'
       // Update the state
       this.setState({ selectedFile: event.target.files[0] });
 
-      console.log('res',target.resault)
     
     };
     
@@ -52,8 +51,7 @@ import { axios } from '../../services/axios.js'
     
       // Details of the uploaded file
       noteService.saveNote(this.state.selectedFile)
-      console.log(this.state.selectedFile);
-      console.log('formData',formData);
+      
     
       // Request made to the backend api
       // Send formData object

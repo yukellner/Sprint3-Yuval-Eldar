@@ -34,7 +34,6 @@ export class NoteAdd extends React.Component {
 
     onSaveTodoNote = (title, todosss) => {
 
-        console.log('title for save', title)
 
         // let todoss = this.state.note.info.todos
 
@@ -50,7 +49,6 @@ export class NoteAdd extends React.Component {
             noteService.saveNote(this.state.note)
                 .then(() => {
                     this.props.loadNotes()
-                    console.log('stateTodo', this.state)
                 })
 
         }, '500')
@@ -85,7 +83,6 @@ export class NoteAdd extends React.Component {
         if (field != 'todo') {
 
             this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, [field]: value } } }))
-            console.log('state', this.state)
         }
         else this.gTodo = target.value
 
@@ -99,7 +96,6 @@ export class NoteAdd extends React.Component {
         
         
         setTimeout(() => {
-            console.log("Delayed for 1 second.");
             this.updateBtnShown()
           }, 200)
           
@@ -117,7 +113,6 @@ export class NoteAdd extends React.Component {
     }
 
     updateBtnShown = () => {
-        console.log('this.state.note.type', this.state.note.type )
         if(this.state.note.type === 'note-todos') this.setState({btnstyle:{visibility:'hidden'}})
         else this.setState({btnstyle:{visibility:'visible'}})
         

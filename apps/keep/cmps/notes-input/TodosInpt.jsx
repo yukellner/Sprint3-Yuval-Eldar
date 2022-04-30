@@ -41,12 +41,12 @@ export class TodosInpt extends React.Component {
     render() {
 
         return <section>
-            {this.state.todos.map(todo => {
-                return <h3 key={utilService.makeId()}>{todo.txt}</h3>
-            })}
             <input placeholder="title" name="title" className="title-inpt t-inpt" onChange={this.handleChange}></input>
             <NewTodo onAddTodo={this.onAddTodo}/>
 
+            {this.state.todos.map(todo => {
+                return <h3 key={utilService.makeId()}>{todo.txt}</h3>
+            })}
 
             <button onClick={this.saveTo}>create card</button>
         </section>

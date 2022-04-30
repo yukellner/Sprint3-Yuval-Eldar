@@ -2,19 +2,13 @@ const { Link, NavLink, withRouter } = ReactRouterDOM
 // import { eventBusService } from '../services/event-bus-service.js'
 
 class _AppHeader extends React.Component {
-    // console.log('Props from header', props);
 
     state = {
         // carsCount: '',
     }
     // removeEvent;
 
-    componentDidMount() {
-        // this.removeEvent = eventBusService.on('cars-count', (carsCount) => {
-        //     // console.log('str from header', str)
-        //     this.setState({ carsCount })
-        // })
-    }
+   
 
     componentWillUnmount() {
         // this.removeEvent()

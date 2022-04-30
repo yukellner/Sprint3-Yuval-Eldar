@@ -39,7 +39,6 @@ export class NoteEdit extends React.Component {
 
 
     transformToEmail = () => {
-        console.log('sending email from note');
 
         const newEmail = {
             to: 'you@gmail.com',

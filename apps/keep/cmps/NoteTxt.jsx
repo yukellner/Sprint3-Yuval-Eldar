@@ -26,7 +26,6 @@ export class NoteTxt extends React.Component {
 
 
 
-        // console.log('color', ev.target.value)
 
         this.setState({ styling: { backgroundColor: bcColor } })
         this.props.note.info.style = { backgroundColor: bcColor }

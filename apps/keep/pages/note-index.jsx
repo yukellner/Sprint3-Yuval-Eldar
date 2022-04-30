@@ -17,7 +17,6 @@ export class NoteIndex extends React.Component {
                     .then(notes => { this.setState({ notes: notes })})
             })
 
-        console.log('initial state', this.state.notes)
 
     }
 
