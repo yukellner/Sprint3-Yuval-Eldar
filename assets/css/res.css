@@ -1,0 +1,20 @@
+@media (max-width: 770px) {
+    .unread-button {
+        display: none;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    
+
+    .add-note-container{
+        flex-direction: column;
+    }
+
+    .notes-form{
+        flex-direction: column;
+    }
+
+}

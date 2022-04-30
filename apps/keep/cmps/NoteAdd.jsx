@@ -110,8 +110,10 @@ export class NoteAdd extends React.Component {
         return <section>
 
             <div className="add-note-container" >
+                <div className="notes-form" style={this.state.note.info.style}>
 
-                <form action="" className="notes-form" style={this.state.note.info.style} onSubmit={this.onSaveNote}>
+
+                <form action=""   onSubmit={this.onSaveNote}>
 
                     {/* <TextInpt/> */}
 
@@ -126,10 +128,8 @@ export class NoteAdd extends React.Component {
 
 
                     {/* <ul className="pick-col" ><a>pick a colors</a></ul> */}
-                    <ColorPicker className="choose-color" updateBc={this.updateBc}/>
-                    <ToolsBar updateType={this.updateType} />
 
-                    <button className="add-note" ><i className="fa-solid fa-file-circle-plus"></i></button>
+                    <button className="add-note" ><i className="fa-solid fa-file-circle-plus add-btn"></i></button>
 
 
 
@@ -140,6 +140,12 @@ export class NoteAdd extends React.Component {
 
 
                 </form>
+                <div className="inpt-aside">
+
+                    <ColorPicker className="choose-color" updateBc={this.updateBc}/>
+                    <ToolsBar updateType={this.updateType} />
+                </div>
+                </div>
             </div>
 
 

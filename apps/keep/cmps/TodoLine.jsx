@@ -51,7 +51,7 @@ export class TodoLine extends React.Component {
 
         }, '100');
 
-        
+
 
 
 
@@ -81,10 +81,17 @@ export class TodoLine extends React.Component {
 
 
 
+            <div className="todo-line-in-card">
 
-            <input id={this.props.todo.txt} onChange={this.onCheckedBox} type="checkbox" checked={this.state.isDone} />
-            <label style={footerStyle} htmlFor={this.props.todo.txt} >{this.props.todo.txt}</label>
-            <i className="fa-solid fa-xmark delete-note right" onClick={this.onDeleteTodo}></i>
+                <div>
+
+                    <input id={this.props.todo.txt} onChange={this.onCheckedBox} type="checkbox" checked={this.state.isDone} />
+                    <label style={footerStyle} htmlFor={this.props.todo.txt} >{this.props.todo.txt}</label>
+                </div>
+                <div>
+                    <i className="fa-solid fa-xmark delete-note right" onClick={this.onDeleteTodo}></i>
+                </div>
+            </div>
 
 
 

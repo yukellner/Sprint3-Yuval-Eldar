@@ -98,7 +98,7 @@ export class NoteTodo extends React.Component {
 
                     })}
                     <form>
-                        <input type="text" onChange={this.handelChange} />
+                        <input type="text" className="new-todo-line" onChange={this.handelChange} />
 
                         <i className="fa-solid fa-plus" onClick={this.onAddTodo}></i>
 
