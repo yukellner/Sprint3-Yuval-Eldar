@@ -17,13 +17,15 @@ export const noteService = {
 const KEY = 'notesDB'
 var gNotes = [
     { id: "n101", type: "note-txt", isPinned: true, info: { title:"hi" ,txt: "Fullstack Me Baby!" } },
-    { id: "n102", type: "note-img", info: { url: "https://cdn.britannica.com/16/177616-050-0167E767/Casablanca-Morocco.jpg", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
-    { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
-
+    // { id: "n102", type: "note-img", info: { url: "https://cdn.britannica.com/16/177616-050-0167E767/Casablanca-Morocco.jpg", title: "Bobi and Me" }, style: { backgroundColor: "#00d" } },
+    // { id: "n103", type: "note-todos", info: { label: "Get my stuff together", todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }] } }];
+]
 function initialSaveNotes() {
 
     let notes = _loadFromStorage()
     if(!notes) _saveToStorage(gNotes)
+
+    return Promise.resolve(notes)
      
 
 }
@@ -36,6 +38,7 @@ function getNotes() {
 function query(filterBy) {
     let notes = _loadFromStorage()
     if (!notes) {
+        return
         notes = _createnotes()
         _saveToStorage(notes)
     }

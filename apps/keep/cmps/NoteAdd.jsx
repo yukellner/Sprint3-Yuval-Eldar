@@ -96,15 +96,22 @@ export class NoteAdd extends React.Component {
 
     }
 
+    updateBc = (color) => {
+        let styling = {backgroundColor: color}
+        this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, style: styling } } }))
+
+
+    }
+
 
 
     render() {
 
         return <section>
 
-            <div className="add-note-container">
+            <div className="add-note-container" >
 
-                <form action="" className="notes-form" onSubmit={this.onSaveNote}>
+                <form action="" className="notes-form" style={this.state.note.info.style} onSubmit={this.onSaveNote}>
 
                     {/* <TextInpt/> */}
 
@@ -119,7 +126,7 @@ export class NoteAdd extends React.Component {
 
 
                     {/* <ul className="pick-col" ><a>pick a colors</a></ul> */}
-                    <ColorPicker className="choose-color" />
+                    <ColorPicker className="choose-color" updateBc={this.updateBc}/>
                     <ToolsBar updateType={this.updateType} />
 
                     <button className="add-note" ><i className="fa-solid fa-file-circle-plus"></i></button>

@@ -10,9 +10,9 @@ handleChange = ({target}) => {
 
     render() {
 
-        return <section>
+        return <section className="container-filter">
             <label className="label-filter"></label>
-            <input type="text" className="notes-filter" onChange={this.handleChange}/>
+            <input type="text" className="notes-filter" placeholder="search" onChange={this.handleChange}/>
 
           
           </section>

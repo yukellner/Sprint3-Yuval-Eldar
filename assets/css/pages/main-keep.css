@@ -197,3 +197,23 @@ input[type='color'] {
     border: 0;
     padding: 5px;
 }
+
+.container-filter{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.notes-filter{
+    width: 80%;
+    margin: 0 auto;
+    margin: 20px;
+    border: 1px lightgrey solid;
+}
+
+.notes-filter:hover{
+    border: 1px grey solid;
+
+
+}

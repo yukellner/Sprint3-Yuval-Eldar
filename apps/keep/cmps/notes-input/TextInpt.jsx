@@ -1,6 +1,8 @@
 
 
 export function TextInpt({ handleChange }) {
+
+    
     return <section>
 
 

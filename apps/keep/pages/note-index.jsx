@@ -3,18 +3,29 @@ import { noteService } from '../services/note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
 
 
-export class NoteIndex extends React.Component{
+export class NoteIndex extends React.Component {
 
     state = {
-        notes: null 
+        notes: null
     }
 
     componentDidMount() {
         noteService.initialSaveNotes()
-        this.setState({notes : noteService.getNotes()})
+            .then(notes => {
+                this.setState({ notes: notes })
+                noteService.getNotes()
+                    .then(notes => { this.setState({ notes: notes })})
+            })
+
+        console.log('initial state', this.state.notes)
+
     }
 
-    
+    updateNotes = (notes) => {
+        this.setState({ notes: notes })
+    }
+
+
 
 
     render() {
@@ -22,7 +33,7 @@ export class NoteIndex extends React.Component{
         return <section>
 
 
-            <NoteList/>
-          </section>
+            <NoteList updateNotes={this.updateNotes} />
+        </section>
     }
 }
