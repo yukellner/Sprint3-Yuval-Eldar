@@ -50,7 +50,7 @@ export class EmailDetail extends React.Component {
             id: this.state.email.id,
             type: 'note-txt',
             isPinned: false,
-            info: { txt: this.state.email.txt }
+            info: { title:this.state.email.title, txt: this.state.email.txt }
         }
         eventBusService.emit('emailToNote', newNote)
         this.sentModal()

@@ -12,6 +12,8 @@ export const emailService = {
   testFunc,
   moveToTrash,
   toggleRead,
+  addEmail,
+  makeId,
 };
 
 const EMAIL_KEY = "mister_email";
@@ -194,4 +196,10 @@ function draftMail(email) {
 
 function testFunc() {
   console.log('test function');
+}
+
+function addEmail(email) {
+  const emails = getEmails()
+  emails.push(email)
+  storageService.saveToStorage(EMAIL_KEY,emails)
 }
