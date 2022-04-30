@@ -82,6 +82,10 @@ body {
     align-items: center; 
 }
 
+.email-menue-option:focus {
+    background-color: rgba(255, 228, 196, 0.472);
+}
+
 .email-menue-compose {
     height: 25px;
     font-size: 20px;
@@ -135,6 +139,74 @@ body {
     display: flex;
     
 }
+
+.labels-section {
+    display: flex;
+    gap: 10px;
+}
+
+.label-work {
+    height: 25px;
+    width: 60px;
+    background-color: rgb(0, 89, 255);
+    color: azure;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.label-fun {
+    height: 25px;
+    width: 60px;
+    background-color: rgb(21, 242, 131);
+    color: azure;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.label-critical {
+    height: 25px;
+    width: 60px;
+    background-color: rgb(243, 39, 46);
+    color: azure;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.label-bills {
+    height: 25px;
+    width: 60px;
+    background-color: rgb(198, 192, 17);
+    color: azure;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.label-memes {
+    height: 25px;
+    width: 60px;
+    background-color: rgb(24, 24, 20);
+    color: azure;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.label-active {
+    box-shadow: 0 3px  0 1px rgb(222, 21, 216);
+    color: rgb(208, 228, 143); 
+}
+
+
+
 
 
  @keyframes email-menue-option {
@@ -193,7 +265,7 @@ body {
 
 .compose-txt-input {
     width: 350px;
-    height: 220px;
+    height: 190px;
 }
 
 .compose-send-button {
