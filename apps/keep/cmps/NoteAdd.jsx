@@ -20,7 +20,7 @@ export class NoteAdd extends React.Component {
                 txt: '',
                 url: null,
                 title: '',
-                style: {backgroundColor: 'lightgrey'},
+                style: {backgroundColor: 'rgb(251, 231, 198)'},
                 label: null,
                 todos: [{
                     txt: '', doneAt: null, isDone: false, id: null
@@ -28,7 +28,8 @@ export class NoteAdd extends React.Component {
                 }]
             },
 
-        }
+        },
+        btnstyle:{visibility:'visible'}
     }
 
     onSaveTodoNote = (title, todosss) => {
@@ -55,6 +56,11 @@ export class NoteAdd extends React.Component {
         }, '500')
 
     }
+
+    // componentDidMount() {
+    //     this.updateBtnShown()
+
+    // }
     onSaveNote = (ev) => {
         ev.preventDefault()
         if (this.state.note.type === 'note-todos') {
@@ -90,6 +96,13 @@ export class NoteAdd extends React.Component {
 
         const type = ev.target.name
         this.setState((prevState) => ({ note: { ...prevState.note, type: type } }))
+        
+        
+        setTimeout(() => {
+            console.log("Delayed for 1 second.");
+            this.updateBtnShown()
+          }, 200)
+          
 
 
 
@@ -101,6 +114,13 @@ export class NoteAdd extends React.Component {
         this.setState((prevState) => ({ note: { ...prevState.note, info: { ...prevState.note.info, style: styling } } }))
 
 
+    }
+
+    updateBtnShown = () => {
+        console.log('this.state.note.type', this.state.note.type )
+        if(this.state.note.type === 'note-todos') this.setState({btnstyle:{visibility:'hidden'}})
+        else this.setState({btnstyle:{visibility:'visible'}})
+        
     }
 
 
@@ -122,14 +142,14 @@ export class NoteAdd extends React.Component {
 
 
 
-                    {this.state.note.type && <DynamicCmp type={this.state.note.type} handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote} />}
+                    {this.state.note.type && <DynamicCmp type={this.state.note.type}  handleChange={this.handleChange} onSaveTodoNote={this.onSaveTodoNote} />}
 
 
 
 
                     {/* <ul className="pick-col" ><a>pick a colors</a></ul> */}
 
-                    <button className="add-note" ><i className="fa-solid fa-file-circle-plus add-btn"></i></button>
+                    <button className="add-note" style={this.state.btnstyle}><i className="fa-solid fa-file-circle-plus add-btn"  ></i></button>
 
 
 

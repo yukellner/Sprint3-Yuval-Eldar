@@ -1,5 +1,5 @@
 .note-card {
-    border: 1px black solid;
+    border: 1px lightgrey solid;
     width: 100%;
     height: 200px;
     border-radius: 10px;
@@ -10,6 +10,11 @@
     padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
+
+}
+
+.note-card:hover{
+    border: 1px black solid;
 
 }
 
@@ -172,6 +177,7 @@ input[type='color'] {
     display: flex;
     justify-content: center;
     text-align: center;
+    padding: 20px;
     /* justify-content: space-between; */
     /* border: 1px black solid; */
 }
@@ -205,15 +211,42 @@ input[type='color'] {
     text-align: center;
 }
 
+.title-inpt{
+    font-size: 24px ;
+}
+
+.inpt-aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+input{
+    border: 0;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
 .notes-filter{
     width: 80%;
     margin: 0 auto;
     margin: 20px;
     border: 1px lightgrey solid;
+    font-size: 30px;
+    border-radius: 5px
+}
+
+.new-todo2{
+    display: flex;
+    justify-content: space-between;
 }
 
 .notes-filter:hover{
     border: 1px grey solid;
+    font-weight: 100;
 
 
 }
@@ -225,5 +258,5 @@ input[type='color'] {
 .todo-line-in-card{
     display: flex;
     justify-content: space-between;
-    
+
 }
