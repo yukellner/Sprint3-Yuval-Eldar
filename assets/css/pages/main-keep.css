@@ -1,5 +1,5 @@
 .note-card {
-    border: 1px lightgrey solid;
+    border: 1px rgba(94, 94, 94, 0.168) solid;
     width: 100%;
     min-height: 200px;
     border-radius: 10px;
@@ -10,7 +10,6 @@
     padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
-    box-shadow:0 0 2px 0 rgb(54, 52, 52);
     justify-content: space-between;
     
 
@@ -34,11 +33,19 @@
 }
 
 .note-card:hover{
-    box-shadow:0 0 6px 0 rgb(54, 52, 52)
-
-    /* border: 1px black solid; */
-
+    box-shadow:0 0 6px 0 rgb(54, 52, 52);
+    animation: note-card 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
+
+@keyframes note-card {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.12);
+    }
+  }
 
 .note-card img {
     width: 100%;

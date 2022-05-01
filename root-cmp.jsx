@@ -2,6 +2,7 @@
 import { Emails } from './apps/email/pages/emails.jsx'
 import { NoteIndex } from './apps/keep/pages/note-index.jsx'
 import { AppHome } from './pages/app-home.jsx'
+import { AppAbout } from './pages/app-about.jsx'
 import { AppHeader } from './cmps/app-header.jsx'
 import { BookList} from './apps/books/cmps/book-list.jsx'
 import { BookDetail } from './apps/books/cmps/book-detail.jsx'
@@ -23,6 +24,7 @@ export function App() {
                 <Route path="/books" component={BookList} />
                 <Route path="/emails" component={Emails} />
                 <Route path="/keep" component={NoteIndex} />
+                <Route path="/about" className="app-home" component={AppAbout} />
                 <Route path="/" className="app-home" component={AppHome} />
             </Switch>
         </section>

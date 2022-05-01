@@ -42,6 +42,11 @@ box-sizing: border-box;
 
 }
 
+.date-priview {
+    position:fixed;
+    right: 80px;
+}
+
 .email-list-container {
     width: 100%;
 }
@@ -343,8 +348,41 @@ box-sizing: border-box;
 
 }
 
-@media (max-width: 770px) {
+.about-section {
+
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+.about-card {
+    margin: 30px;
+    margin-top: 150px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.about-img {
+  
+    border-radius: 50%;
+    border: 2px solid rgba(23, 9, 47, 0.751);
+    height: 160px;
+    width: 160px;
+}
+
+
+
+@media (max-width: 850px) {
     .unread-button {
+        display: none;
+    }
+    .date-priview {
         display: none;
     }
 }
@@ -360,6 +398,24 @@ box-sizing: border-box;
         margin-left: 100px;
         gap: 20px;
     }
+
+    .email-core {
+        flex-direction: column;
+    }
+
+   .email-menue-option {
+       justify-content: center;
+   }
+
+   .email-menue-compose {
+       justify-content: center;
+   }
+
+   .about-section {
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+   }
 
    
 

@@ -46,9 +46,50 @@
 .app-header-link-home {
     position: fixed;
     top: 40px;
-    right: 30px;
+    right: 90px;
+}
+
+.app-header-link-nav-container {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+}
+
+.app-header-link-nav {
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+
+
+}
+.app-header-link-nav > a {
+
+    margin-top: 3px;
+    text-decoration: none;
+
 }
 
 .my-active {
     color:rgba(96, 96, 96, 0.668);
+}
+
+.navbar-img {
+    height: 30px;
+    width: 30px;
+    margin-bottom: 10px;
+}
+#navbar-img .nav-hidden-menue {
+    visibility: hidden;
+}
+#navbar-img:hover .nav-hidden-menue {
+    visibility: visible;
+}
+
+.nav-hidden-menue {
+    height: 60px;
+    Width: 60px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(207, 124, 15);
+    display:none
 }

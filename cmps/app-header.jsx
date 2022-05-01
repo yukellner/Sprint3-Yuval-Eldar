@@ -1,32 +1,31 @@
 const { Link, NavLink, withRouter } = ReactRouterDOM
-// import { eventBusService } from '../services/event-bus-service.js'
 
 class _AppHeader extends React.Component {
-
-    state = {
-        // carsCount: '',
-    }
-    // removeEvent;
-
-   
+ 
 
     componentWillUnmount() {
-        // this.removeEvent()
+
     }
 
     render() {
-        // const { carsCount } = this.state
-        // Almost never use goBack -> it might send the user outside of the app.
-        return <header className="app-header">
-            {/* <h3 onClick={() => this.props.history.goBack()}>Cars R Us</h3> */}
 
-            {/* {carsCount && <h3>Cars count: {carsCount}</h3>} */}
+        return <header className="app-header">
+        
             <nav className="app-header-nav">
                 <NavLink className="app-header-link" to="/emails" activeClassName="my-active">Emails</NavLink>
                 <NavLink className="app-header-link" to="/keep" activeClassName="my-active">Keep</NavLink>
                 <NavLink className="app-header-link" to="/books" activeClassName="my-active">Books</NavLink>
             </nav>
-                <NavLink className="app-header-link-home" to="/" exact>Home</NavLink>
+            <div className="app-header-link-nav-container" >
+                <div className="app-header-link-nav">
+                <NavLink  to="/" exact>Home</NavLink>
+                <NavLink  to="/about" exact>About</NavLink>
+                {/* <div>
+                    <img className="navbar-img" src="https://cdn-icons-png.flaticon.com/512/189/189791.png" alt="" />
+                    <div className="nav-hidden-menue"></div>
+                </div> */}
+                </div>
+            </div>
         </header>
     }
 }
